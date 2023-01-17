@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import com.sothree.slidinguppanel.SlidingUpPanelLayout
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +23,9 @@ class FoodFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    lateinit var foodBtn : Button
+    lateinit var foodPanel : SlidingUpPanelLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -34,7 +39,17 @@ class FoodFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_food, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_food, container, false)
+
+        foodBtn =  view.findViewById(R.id.foodSearchBtn)
+        foodPanel = view.findViewById(R.id.bottom_foodPanel)
+
+
+        foodBtn.setOnClickListener {
+            foodPanel.panelState = SlidingUpPanelLayout.PanelState.EXPANDED
+        }
+
+        return view
     }
 
     companion object {
