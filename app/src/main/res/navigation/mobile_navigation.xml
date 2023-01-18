@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.guru16application.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_clothing"
+            app:destination="@id/navigation_clothing" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_food"
+            app:destination="@id/navigation_food" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_shelter"
+            app:destination="@id/navigation_shelter" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_clothing"
+        android:name="com.example.guru16application.ui.clothing.ClothingFragment"
+        android:label="@string/title_clothing"
+        tools:layout="@layout/fragment_clothing" >
+        <action
+            android:id="@+id/action_navigation_clothing_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_clothing_to_navigation_food"
+            app:destination="@id/navigation_food" />
+        <action
+            android:id="@+id/action_navigation_clothing_to_navigation_shelter"
+            app:destination="@id/navigation_shelter" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_food"
+        android:name="com.example.guru16application.ui.food.FoodFragment"
+        android:label="@string/title_food"
+        tools:layout="@layout/fragment_food" >
+        <action
+            android:id="@+id/action_navigation_food_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_food_to_navigation_shelter"
+            app:destination="@id/navigation_shelter" />
+        <action
+            android:id="@+id/action_navigation_food_to_navigation_clothing"
+            app:destination="@id/navigation_clothing" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_shelter"
+        android:name="com.example.guru16application.ui.shelter.ShelterFragment"
+        android:label="@string/title_shelter"
+        tools:layout="@layout/fragment_shelter" >
+        <action
+            android:id="@+id/action_navigation_shelter_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_shelter_to_navigation_clothing"
+            app:destination="@id/navigation_clothing" />
+        <action
+            android:id="@+id/action_navigation_shelter_to_navigation_food"
+            app:destination="@id/navigation_food" />
+    </fragment>
+</navigation>

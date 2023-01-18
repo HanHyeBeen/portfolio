@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_clothing"
+        android:icon="@drawable/ic_baseline_dry_cleaning_24"
+        android:title="@string/title_clothing" />
+
+    <item
+        android:id="@+id/navigation_food"
+        android:icon="@drawable/ic_baseline_fastfood_24"
+        android:title="@string/title_food" />
+
+    <item
+        android:id="@+id/navigation_shelter"
+        android:icon="@drawable/ic_baseline_chair_24"
+        android:title="@string/title_shelter" />
+
+</menu>
