@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.food.FoodFragment">
+
 
     <TextView
         android:id="@+id/text_food"
@@ -15,11 +16,13 @@
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    <!-- TODO: Update blank fragment layout -->
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom"
@@ -28,7 +31,7 @@
         app:umanoScrollableView="@id/listView"
         app:umanoPanelHeight="40dp"
         app:umanoOverlay="false"
-        app:umanoParallaxOffset="200dp"
+        app:umanoParallaxOffset="50dp"
         app:umanoShadowHeight="10dp">
 
 
@@ -48,7 +51,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:hint="검색어를 입력하세요"
-                    android:minHeight="48dp"
                     app:layout_constraintEnd_toStartOf="@+id/foodSearchBtn"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,7 +74,7 @@
         <LinearLayout
             android:id="@+id/dragView"
             android:layout_width="match_parent"
-            android:layout_height="600dp"
+            android:layout_height="500dp"
             android:clickable="true"
             android:focusable="false"
             android:orientation="vertical">
@@ -92,58 +94,15 @@
             </LinearLayout>
 
 
-            <ScrollView
+            <ListView
                 android:id="@+id/listView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="16sp">
+                android:paddingTop="16sp" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/img"/>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:paddingLeft="10dp"
-                            android:paddingTop="5dp">
-
-
-                            <TextView
-                                android:id="@+id/foodName"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="비틀주스" />
-
-                            <TextView
-                                android:id="@+id/foodMenu"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="꼬숩미라떼"
-                                android:layout_below="@+id/foodName"/>
-
-                        </RelativeLayout>
-
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-            </ScrollView>
 
         </LinearLayout>
 
-    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+</FrameLayout>
