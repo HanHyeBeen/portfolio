@@ -10,6 +10,8 @@ import com.example.guru16application.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
+    // ──────────────────────────────────────────────────────────── 프래그먼트 초기화
+
     private var _binding : FragmentHomeBinding? = null
     private  val binding get() = _binding!!
 
@@ -31,5 +33,6 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
+    // ──────────────────────────────────────────────────────────── 프래그먼트 초기화 끝
 
 }

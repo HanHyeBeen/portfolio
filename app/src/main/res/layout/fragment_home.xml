@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/homeContainer"
     tools:context=".HomeFragment">
 
+    <!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -19,31 +21,36 @@
         <ImageView
             android:id="@+id/nav_home"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/ic_launcher_foreground" />
+            android:src="@drawable/ic_baseline_home_24" />
 
         <ImageView
             android:id="@+id/nav_clothing"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/ic_launcher_foreground" />
+            android:src="@drawable/ic_baseline_dry_cleaning_24" />
 
         <ImageView
             android:id="@+id/nav_food"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/ic_launcher_foreground" />
+            android:src="@drawable/ic_baseline_fastfood_24" />
 
         <ImageView
             android:id="@+id/nav_shelter"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/ic_launcher_foreground" />
+            android:src="@drawable/ic_baseline_bed_24" />
     </LinearLayout>
+    -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
