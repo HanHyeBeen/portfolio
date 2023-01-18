@@ -1,11 +1,11 @@
-package com.example.guru16application
+package com.example.guru16application.member
 
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import com.example.studentmanagement.DBManager
+import com.example.guru16application.R
 
 class RegisterActivity : AppCompatActivity() {
     lateinit var dbManager: DBManager

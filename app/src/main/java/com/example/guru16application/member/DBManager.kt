@@ -1,4 +1,4 @@
-package com.example.studentmanagement
+package com.example.guru16application.member
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
