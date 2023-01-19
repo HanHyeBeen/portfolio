@@ -11,10 +11,10 @@ class DBManager(
     version: Int
 ) : SQLiteOpenHelper(context, name, factory, version) {
     override fun onCreate(db: SQLiteDatabase?) {
-        db!!.execSQL("CREATE TABLE personnel (name text, gender text, age INTEGER, tel text)")
+        db!!.execSQL("CREATE TABLE member (name text, tel text, email text, pw text)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        db!!.execSQL("DROP TABLE IF EXISTS groupTBL")
+        db!!.execSQL("DROP TABLE IF EXISTS member")
     }
 }

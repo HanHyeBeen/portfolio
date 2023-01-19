@@ -16,13 +16,13 @@
         tools:srcCompat="@drawable/mainsymbol" />
 
     <EditText
-        android:id="@+id/edit_id"
+        android:id="@+id/edit_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:ems="12"
-        android:hint="아이디"
+        android:hint="이메일"
         android:inputType="textPersonName"
         android:minHeight="48dp" />
 
