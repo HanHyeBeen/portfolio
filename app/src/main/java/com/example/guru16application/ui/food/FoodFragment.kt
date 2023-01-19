@@ -48,26 +48,27 @@ class FoodFragment : Fragment() {
         _binding = FragmentFoodBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textFood
+        //이후 삭제해도 괜찮은 코드
+        /*val textView: TextView = binding.textFood
         notificationsViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
-        }
+        }*/
 
         lateinit var dbManager: ProductDBHelper
         lateinit var sqlitedb: SQLiteDatabase
         lateinit var Image: ByteArray
-        lateinit var listView: ListView
-        lateinit var foodBtn : Button
-        lateinit var foodPanel : SlidingUpPanelLayout
-        lateinit var foodEdt: EditText
 
         var list = arrayListOf<ListViewItem>()  //data 받아올 장소
 
-        val view: View = inflater.inflate(R.layout.fragment_food, container, false)
-        foodBtn =  view.findViewById(R.id.foodSearchBtn)
-        foodPanel = view.findViewById(R.id.bottom_foodPanel)
-        foodEdt = view.findViewById(R.id.foodSearchEdt)
-        listView = view.findViewById(R.id.listView)
+        //val view: View = inflater.inflate(R.layout.fragment_food, container, false)
+
+        binding.foodSearchBtn.setOnClickListener {
+
+            Toast.makeText(mainActivity,"됨", Toast.LENGTH_SHORT).show()
+            binding.bottomFoodPanel.panelState = SlidingUpPanelLayout.PanelState.EXPANDED
+        }
+
+
 
         //db 관련 코드 : 데이터가 있는 db 접속하기
         /*dbManager = ProductDBHelper(mainActivity,"food.db")
@@ -87,12 +88,18 @@ class FoodFragment : Fragment() {
             Toast.makeText(mainActivity,"실행됨", Toast.LENGTH_SHORT).show()
         }
 
-        val Adapter_1 = ListViewAdapter(mainActivity, list)
-        listView.adapter = Adapter_1
+        val listView1: ListView = binding.listView
+        notificationsViewModel.list_n.observe(viewLifecycleOwner) {
+
+            val modelist : ArrayList<ListViewItem> = list
+            val Adapter_1 = ListViewAdapter(mainActivity, modelist)
+            listView1.adapter = Adapter_1
+        }
+
 
         sqlitedb.close()
 
-        foodBtn.setOnClickListener {
+        binding.foodSearchBtn.setOnClickListener {
 
             list.clear()
             Toast.makeText(mainActivity,"됨", Toast.LENGTH_SHORT).show()
@@ -113,18 +120,22 @@ class FoodFragment : Fragment() {
             while(cursor.moveToNext()) {
                 Image = cursor.getBlob(cursor.getColumnIndexOrThrow("fimage"))
                 val bitmap: Bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.size)
-                // foodImage.setImageBitmap(bitmap)
                 var Name = cursor.getString((cursor.getColumnIndexOrThrow("fName"))).toString()
                 var Menu = cursor.getString((cursor.getColumnIndexOrThrow("fMenu"))).toString()
                 list.add(ListViewItem(bitmap, Name, Menu))
             }
 
-            val Adapter_1 = ListViewAdapter(mainActivity, list)
-            listView.adapter = Adapter_1
+            val listView2: ListView = binding.listView
+        notificationsViewModel.list_n.observe(viewLifecycleOwner) {
+
+            val modelist : ArrayList<ListViewItem> = list
+            val Adapter_1 = ListViewAdapter(mainActivity, modelist)
+            listView2.adapter = Adapter_1
+        }
 
             sqlitedb.close()
 
-            foodPanel.panelState = SlidingUpPanelLayout.PanelState.EXPANDED
+            binding.bottomFoodPanel.panelState = SlidingUpPanelLayout.PanelState.EXPANDED
 
         } */
 

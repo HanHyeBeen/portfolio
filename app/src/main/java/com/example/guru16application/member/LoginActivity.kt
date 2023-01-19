@@ -29,14 +29,14 @@ class LoginActivity : AppCompatActivity() {
         btn_login.setOnClickListener {
 
 
-            if(dbManager.getResult(edit_email.getText().toString(), edit_pw.getText().toString()) == true) {
+            /*if(dbManager.getResult(edit_email.getText().toString(), edit_pw.getText().toString()) == true) {
                 dialog.setMessage("로그인 성공")
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
             else{
                 dialog.setMessage("로그인 실패")
-            }
+            }*/
         }
 
         btn_register.setOnClickListener {
