@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.guru16application.MainActivity
 import com.example.guru16application.R
 import com.example.guru16application.databinding.FragmentFoodBinding
+import com.example.guru16application.databinding.FragmentFoodBinding.*
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 
 class FoodFragment : Fragment() {
@@ -45,7 +46,7 @@ class FoodFragment : Fragment() {
         val notificationsViewModel =
             ViewModelProvider(this).get(FoodViewModel::class.java)
 
-        _binding = FragmentFoodBinding.inflate(inflater, container, false)
+        _binding = inflate(inflater, container, false)
         val root: View = binding.root
 
         //이후 삭제해도 괜찮은 코드
