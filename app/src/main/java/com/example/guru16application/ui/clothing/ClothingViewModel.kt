@@ -10,4 +10,9 @@ class ClothingViewModel : ViewModel() {
         value = "This is clothing Fragment"
     }
     val text: LiveData<String> = _text
+
+    private var _list = MutableLiveData<ArrayList<ReViewItem>>().apply {
+        value = arrayListOf<ReViewItem>()
+    }
+    var clothlist: LiveData<ArrayList<ReViewItem>> = _list
 }

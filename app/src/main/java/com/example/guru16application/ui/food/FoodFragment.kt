@@ -13,9 +13,9 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.guru16application.MainActivity
-import com.example.guru16application.R
 import com.example.guru16application.databinding.FragmentFoodBinding
 import com.example.guru16application.databinding.FragmentFoodBinding.*
+import com.example.guru16application.ui.ProductDBHelper
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 
 class FoodFragment : Fragment() {
@@ -63,16 +63,9 @@ class FoodFragment : Fragment() {
 
         //val view: View = inflater.inflate(R.layout.fragment_food, container, false)
 
-        binding.foodSearchBtn.setOnClickListener {
-
-            Toast.makeText(mainActivity,"됨", Toast.LENGTH_SHORT).show()
-            binding.bottomFoodPanel.panelState = SlidingUpPanelLayout.PanelState.EXPANDED
-        }
-
-
 
         //db 관련 코드 : 데이터가 있는 db 접속하기
-        /*dbManager = ProductDBHelper(mainActivity,"food.db")
+        dbManager = ProductDBHelper(mainActivity,"food.db")
         sqlitedb = dbManager.readableDatabase
         sqlitedb = dbManager.writableDatabase
 
@@ -96,16 +89,15 @@ class FoodFragment : Fragment() {
             val Adapter_1 = ListViewAdapter(mainActivity, modelist)
             listView1.adapter = Adapter_1
         }
-
-
         sqlitedb.close()
+
 
         binding.foodSearchBtn.setOnClickListener {
 
             list.clear()
             Toast.makeText(mainActivity,"됨", Toast.LENGTH_SHORT).show()
 
-            var str_text: String = foodEdt.text.toString()
+            var str_text: String = binding.foodSearchEdt.text.toString()
 
             sqlitedb = dbManager.readableDatabase
             sqlitedb = dbManager.writableDatabase
@@ -138,7 +130,7 @@ class FoodFragment : Fragment() {
 
             binding.bottomFoodPanel.panelState = SlidingUpPanelLayout.PanelState.EXPANDED
 
-        } */
+        }
 
 
 
@@ -166,7 +158,7 @@ class FoodFragment : Fragment() {
 
 //변수
 lateinit var db: SQLiteDatabase
-    var filePath: String = "/data/data/com.example.guru16application/databases/"
+var filePath: String = "/data/data/com.example.guru16application/databases/"
 
 //함수
  private fun setDB(ctx: Context) {

@@ -33,7 +33,7 @@
         app:umanoPanelHeight="40dp"
         app:umanoOverlay="false"
         app:umanoFadeColor="#00000000"
-        app:umanoParallaxOffset="0dp"
+        app:umanoParallaxOffset="20dp"
         app:umanoShadowHeight="10dp">
 
 

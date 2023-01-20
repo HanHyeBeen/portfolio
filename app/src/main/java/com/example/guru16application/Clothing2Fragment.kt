@@ -46,8 +46,8 @@ class ClothingFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
 
-        searchEdt = requireView().findViewById(R.id.searchEdt)
-        searchBtn = requireView().findViewById(R.id.searchBtn)
+       // searchEdt = requireView().findViewById(R.id.searchEdt)
+        //searchBtn = requireView().findViewById(R.id.searchBtn)
 
         myHelper = myDBHelper(mainActivity.applicationContext)
     }
