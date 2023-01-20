@@ -79,7 +79,6 @@ class FoodFragment : Fragment() {
             var Menu = cursor.getString((cursor.getColumnIndexOrThrow("fMenu"))).toString()
             list.add(ListViewItem(bitmap,Name,Menu))
 
-            Toast.makeText(mainActivity,"실행됨", Toast.LENGTH_SHORT).show()
         }
 
         val listView1: ListView = binding.listView
