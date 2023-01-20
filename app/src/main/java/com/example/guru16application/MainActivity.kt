@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.guru16application.databinding.ActivityMainBinding
+import com.example.guru16application.ui.settings.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -43,10 +45,21 @@ class MainActivity : AppCompatActivity() {
 
         when (item?.itemId) {
             R.id.action_settings -> {
-
+                val settingsFragment = SettingsFragment()
+                show(settingsFragment)
+                return true
+            }
+            else -> {
+                return true
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+    private fun show(fragment: Fragment) {
+        val fragManager = supportFragmentManager.beginTransaction()
+
+        fragManager.replace(R.id.nav_host_fragment_activity_main, SettingsFragment()).commit()
+
     }
 
 }
