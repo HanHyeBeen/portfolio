@@ -4,11 +4,15 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.example.guru16application.R
 
@@ -21,6 +25,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var addMail: EditText
     lateinit var addPw: EditText
     lateinit var addPwCheck: EditText
+    lateinit var pw_confirm: TextView
     lateinit var btnRegister: Button
 
     val TAG: String = "Register"
@@ -87,6 +92,26 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
         }
+        addPwCheck.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: String, count: String, after: String) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: String, before: String, count: String) {
+
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                if(addPw.getText().toString().equals(addPwCheck.getText().toString())){
+                    pw_confirm.setText("비밀번호가 일치합니다.")
+                    pw_confirm.setTextColor(Color.GRAY)
+                }
+                else{
+                    pw_confirm.setText("비밀번호가 일치하지 않습니다.")
+                    pw_confirm.setTextColor(Color.RED)
+                }
+            }
+        })
     }
     // 회원가입 실패시
     fun dialog(type: String){

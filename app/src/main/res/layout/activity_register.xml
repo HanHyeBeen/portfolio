@@ -22,7 +22,9 @@
         <EditText
             android:id="@+id/addName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:lines="1"/>
     </LinearLayout>
 
     <LinearLayout
@@ -37,7 +39,9 @@
         <EditText
             android:id="@+id/addTel"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:lines="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -52,7 +56,9 @@
         <EditText
             android:id="@+id/addMail"
             android:layout_width="200sp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:lines="1" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -73,7 +79,9 @@
         <EditText
             android:id="@+id/addPw"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:lines="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -88,7 +96,22 @@
         <EditText
             android:id="@+id/addPwCheck"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:lines="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60sp">
+
+        <TextView
+            android:id="@+id/pw_confirm"
+            android:layout_marginLeft="60sp"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:text="비밀번호 확인" />
+
     </LinearLayout>
 
     <LinearLayout
