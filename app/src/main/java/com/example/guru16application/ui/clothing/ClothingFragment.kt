@@ -1,6 +1,7 @@
 package com.example.guru16application.ui.clothing
 
 import android.content.Context
+import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.Bitmap
@@ -167,6 +168,17 @@ class ClothingFragment : Fragment() {
 
         }
 
+        // 그리드 레이아웃 클릭 시 이벤트
+        binding.clothGrid.setOnItemClickListener { adapterView, view, i, l ->
+            var item:ReViewItem = Grlist[i]
+            val test = item.name
+            Toast.makeText(activity, "$test", Toast.LENGTH_SHORT).show()
+            //액티비티와 프래그먼트 연결
+            /*var intent: Intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)*/
+
+        }
+
         return root
     }
 
@@ -178,7 +190,6 @@ class ClothingFragment : Fragment() {
 
     private fun downKeyboard() {
         if (activity != null && requireActivity().currentFocus != null) {
-            // 프래그먼트기 때문에 getActivity() 사용
             val inputManager: InputMethodManager =
                 requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             inputManager.hideSoftInputFromWindow(

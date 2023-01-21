@@ -92,7 +92,7 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
         }
-        addPwCheck.addTextChangedListener(object: TextWatcher {
+        /*addPwCheck.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: String, count: String, after: String) {
 
             }
@@ -111,7 +111,7 @@ class RegisterActivity : AppCompatActivity() {
                     pw_confirm.setTextColor(Color.RED)
                 }
             }
-        })
+        })*/
     }
     // 회원가입 실패시
     fun dialog(type: String){

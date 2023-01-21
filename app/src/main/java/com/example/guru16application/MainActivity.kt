@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -16,6 +17,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.guru16application.databinding.ActivityMainBinding
 import com.example.guru16application.ui.settings.SettingsFragment
 import com.example.guru16application.ui.ProductDBHelper
+import com.example.guru16application.ui.shelter.ShelterFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.io.File
 import java.io.FileOutputStream
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -55,6 +58,10 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -82,6 +89,7 @@ class MainActivity : AppCompatActivity() {
         fragManager.replace(R.id.nav_host_fragment_activity_main, SettingsFragment()).commit()
 
     }
+
 
     private fun setDB(ctx: Context) {
 

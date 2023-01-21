@@ -94,7 +94,7 @@ class FoodFragment : Fragment() {
         binding.foodSearchBtn.setOnClickListener {
 
             list.clear()
-            Toast.makeText(mainActivity,"됨", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(mainActivity,"됨", Toast.LENGTH_SHORT).show()
 
             var str_text: String = binding.foodSearchEdt.text.toString()
 
@@ -127,9 +127,20 @@ class FoodFragment : Fragment() {
 
             sqlitedb.close()
 
+
+
+            //기존 데이터를 없애는 코드
+            val new: EditText = binding.foodSearchEdt
+            notificationsViewModel.text.observe(viewLifecycleOwner) {
+                new.text = null
+            }
+
             binding.bottomFoodPanel.panelState = SlidingUpPanelLayout.PanelState.EXPANDED
 
         }
+
+
+
 
 
 
@@ -140,6 +151,7 @@ class FoodFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
 
 /* MainActivity: asset에 있는 db 파일 읽어서 추가하고 접근하기
