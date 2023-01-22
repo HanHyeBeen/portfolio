@@ -24,8 +24,6 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var addTel: EditText
     lateinit var addMail: EditText
     lateinit var addPw: EditText
-    lateinit var addPwCheck: EditText
-    lateinit var pw_confirm: TextView
     lateinit var btnRegister: Button
 
     val TAG: String = "Register"
@@ -40,7 +38,6 @@ class RegisterActivity : AppCompatActivity() {
         addTel = findViewById(R.id.addTel)
         addMail = findViewById(R.id.addMail)
         addPw = findViewById(R.id.addPw)
-        addPwCheck = findViewById(R.id.addPwCheck)
         btnRegister = findViewById(R.id.btnRegister)
 
         dbManager = DBManager(this, "member", null, 1)
@@ -52,78 +49,51 @@ class RegisterActivity : AppCompatActivity() {
             val tel = addTel.text.toString()
             val mail = addMail.text.toString()
             val pw = addPw.text.toString()
-            val pw_re = addPwCheck.text.toString()
 
-            if(name.isEmpty() || tel.isEmpty() || mail.isEmpty() || pw.isEmpty() || pw_re.isEmpty()){
-                isExistBlank = true
-            }
-            else{
-                if(pw == pw_re){
-                    isPWSame = true
+            do {
+                if (name.isEmpty() || tel.isEmpty() || mail.isEmpty() || pw.isEmpty()) {
+                    isExistBlank = true
                 }
-            }
 
-            if(!isExistBlank && isPWSame) {
-                Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
+                if (!isExistBlank) {
+                    dialog("success")
 
-                // 입력한 정보 저장
-                var str_name: String = addName.text.toString()
-                var str_tel: String = addTel.text.toString()
-                var str_mail: String = addMail.text.toString()
-                var str_pw: String = addPw.text.toString()
+                    // 입력한 정보 저장
+                    var str_name: String = addName.text.toString()
+                    var str_tel: String = addTel.text.toString()
+                    var str_mail: String = addMail.text.toString()
+                    var str_pw: String = addPw.text.toString()
 
-                sqlitedb = dbManager.writableDatabase
-                sqlitedb.execSQL("INSERT INTO member VALUES ('"
-                        + str_name + "',"
-                        + str_tel + "',"
-                        + str_mail + "',"
-                        + str_pw + "')")
-                sqlitedb.close()
+                    sqlitedb = dbManager.writableDatabase
+                    sqlitedb.execSQL(
+                        "INSERT INTO member VALUES ('"
+                                + str_name + "',"
+                                + str_tel + "',"
+                                + str_mail + "',"
+                                + str_pw + "')"
+                    )
+                    sqlitedb.close()
 
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-            }
-            else{
-                if(isExistBlank){   // 작성 안한 항목이 있을 경우
-                    dialog("blank")
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    if (isExistBlank) {   // 작성 안한 항목이 있을 경우 다이얼로그
+                        dialog("blank")
+                    }
                 }
-                else if(!isPWSame){ // 입력한 비밀번호가 다를 경우
-                    dialog("not same")
-                }
-            }
+            } while (isExistBlank)
         }
-        /*addPwCheck.addTextChangedListener(object: TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: String, count: String, after: String) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: String, before: String, count: String) {
-
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                if(addPw.getText().toString().equals(addPwCheck.getText().toString())){
-                    pw_confirm.setText("비밀번호가 일치합니다.")
-                    pw_confirm.setTextColor(Color.GRAY)
-                }
-                else{
-                    pw_confirm.setText("비밀번호가 일치하지 않습니다.")
-                    pw_confirm.setTextColor(Color.RED)
-                }
-            }
-        })*/
     }
-    // 회원가입 실패시
+
     fun dialog(type: String){
         val dialog = AlertDialog.Builder(this)
 
         if(type == "blank"){
             dialog.setTitle("회원가입 실패")
             dialog.setMessage("입력란을 모두 작성해주세요")
-        }
-        else if(type == "not same"){
-            dialog.setTitle("회원가입 실패")
-            dialog.setMessage("비밀번호가 다릅니다")
+        } else if(type == "success") {
+            dialog.setTitle("회원가입 성공")
+            dialog.setMessage("로그인 후 이용하세요")
         }
 
         val dialog_listener = object: DialogInterface.OnClickListener{
@@ -138,4 +108,5 @@ class RegisterActivity : AppCompatActivity() {
         dialog.setPositiveButton("확인",dialog_listener)
         dialog.show()
     }
+
 }

@@ -40,8 +40,9 @@
             android:id="@+id/addTel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:lines="1" />
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="phone" />
     </LinearLayout>
 
     <LinearLayout
@@ -55,10 +56,11 @@
 
         <EditText
             android:id="@+id/addMail"
-            android:layout_width="200sp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:lines="1" />
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textEmailAddress" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -80,38 +82,11 @@
             android:id="@+id/addPw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
             android:singleLine="true"
+            android:inputType="textPassword"
             android:lines="1" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60sp">
-
-        <TextView
-            android:layout_width="60sp"
-            android:layout_height="wrap_content"
-            android:text="비밀번호 확인" />
-
-        <EditText
-            android:id="@+id/addPwCheck"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:lines="1" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60sp">
-
-        <TextView
-            android:id="@+id/pw_confirm"
-            android:layout_marginLeft="60sp"
-            android:layout_width="100sp"
-            android:layout_height="wrap_content"
-            android:text="비밀번호 확인" />
-
     </LinearLayout>
 
     <LinearLayout
