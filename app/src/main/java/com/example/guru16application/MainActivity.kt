@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         } else {
 
-            setDB(this)
+            setDB(this, "food.db")
             val mHelper: ProductDBHelper = ProductDBHelper(this, "food.db")
             db = mHelper.writableDatabase
 
@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun setDB(ctx: Context) {
+    private fun setDB(ctx: Context, str : String) {
 
         var folder: File = File(filePath)
         if (folder.exists()) {
@@ -99,12 +99,12 @@ class MainActivity : AppCompatActivity() {
             folder.mkdirs();
         }
         var assetManager: AssetManager = ctx.resources.assets
-        var outfile: File = File(filePath + "food.db")
+        var outfile: File = File(filePath + str)
         var IStr: InputStream? = null
         var fo: FileOutputStream? = null
         var filesize: Int = 0
         try {
-            IStr = assetManager.open("food.db", AssetManager.ACCESS_BUFFER)
+            IStr = assetManager.open(str, AssetManager.ACCESS_BUFFER)
             filesize = IStr.available()
             if (outfile.length() <= 0) {
                 val buffer = ByteArray(filesize)

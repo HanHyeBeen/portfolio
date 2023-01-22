@@ -68,14 +68,14 @@ class ClothingFragment : Fragment() {
         Grlist.clear()
 
         var cursor: Cursor
-        cursor = sqlitedb.rawQuery("SELECT * FROM food ;", null)
+        cursor = sqlitedb.rawQuery("SELECT * FROM cloth ;", null)
 
 
 
         while (cursor.moveToNext()) {
-            Image = cursor.getBlob(cursor.getColumnIndexOrThrow("fimage"))
+            Image = cursor.getBlob(cursor.getColumnIndexOrThrow("cMainimg"))
             val bitmap: Bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.size)
-            var Name = cursor.getString((cursor.getColumnIndexOrThrow("fName"))).toString()
+            var Name = cursor.getString((cursor.getColumnIndexOrThrow("cName"))).toString()
 
             Relist.add(ReViewItem(bitmap, Name))
             Grlist.add(ReViewItem(bitmap, Name))
@@ -104,7 +104,7 @@ class ClothingFragment : Fragment() {
         var expandSpec =
             View.MeasureSpec.makeMeasureSpec(Int.MAX_VALUE shr 2, View.MeasureSpec.AT_MOST)
         binding.clothGrid.measure(0, expandSpec)
-        binding.clothGrid.getLayoutParams().height = check("SELECT * FROM food ;")
+        binding.clothGrid.getLayoutParams().height = check("SELECT * FROM cloth ;")
 
 
         //버튼 클릭 시 이벤트
@@ -122,15 +122,15 @@ class ClothingFragment : Fragment() {
 
             var cursor: Cursor
             cursor = sqlitedb.rawQuery(
-                "SELECT * FROM food WHERE fName LIKE '%" + cloth_text + "%';",
+                "SELECT * FROM cloth WHERE cName LIKE '%" + cloth_text + "%';",
                 null
             )
             //cursor = sqlitedb.rawQuery("SELECT * FROM food ;", null)
 
             while (cursor.moveToNext()) {
-                Image = cursor.getBlob(cursor.getColumnIndexOrThrow("fimage"))
+                Image = cursor.getBlob(cursor.getColumnIndexOrThrow("cMainimg"))
                 val bitmap: Bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.size)
-                var Name = cursor.getString((cursor.getColumnIndexOrThrow("fName"))).toString()
+                var Name = cursor.getString((cursor.getColumnIndexOrThrow("cName"))).toString()
 
                 Relist.add(ReViewItem(bitmap, Name))
                 Grlist.add(ReViewItem(bitmap, Name))
@@ -156,7 +156,7 @@ class ClothingFragment : Fragment() {
 
             sqlitedb.close()
 
-            var sqlsen: String = "SELECT * FROM food WHERE fName LIKE '%$cloth_text%';"
+            var sqlsen: String = "SELECT * FROM cloth WHERE cName LIKE '%$cloth_text%';"
 
 
             //사이즈 조절
@@ -171,11 +171,12 @@ class ClothingFragment : Fragment() {
         // 그리드 레이아웃 클릭 시 이벤트
         binding.clothGrid.setOnItemClickListener { adapterView, view, i, l ->
             var item:ReViewItem = Grlist[i]
-            val test = item.name
-            Toast.makeText(activity, "$test", Toast.LENGTH_SHORT).show()
+            val sname = item.name
+            Toast.makeText(activity, "$sname", Toast.LENGTH_SHORT).show()
             //액티비티와 프래그먼트 연결
-            /*var intent: Intent = Intent(activity, MainActivity::class.java)
-            startActivity(intent)*/
+            var intent: Intent = Intent(context,ClothNextActivity::class.java)
+            intent.putExtra("searchName",sname)
+            startActivity(intent)
 
         }
 
@@ -214,9 +215,9 @@ class ClothingFragment : Fragment() {
 
 
         while (cursor.moveToNext()) {
-            Image = cursor.getBlob(cursor.getColumnIndexOrThrow("fimage"))
+            Image = cursor.getBlob(cursor.getColumnIndexOrThrow("cMainimg"))
             val bitmap: Bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.size)
-            var Name = cursor.getString((cursor.getColumnIndexOrThrow("fName"))).toString()
+            var Name = cursor.getString((cursor.getColumnIndexOrThrow("cName"))).toString()
 
             Grlist.add(ReViewItem(bitmap, Name))
 

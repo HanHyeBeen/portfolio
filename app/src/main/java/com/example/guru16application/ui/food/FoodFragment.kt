@@ -73,10 +73,10 @@ class FoodFragment : Fragment() {
         cursor = sqlitedb.rawQuery("SELECT * FROM food ;", null)
 
         while(cursor.moveToNext()){
-            Image = cursor.getBlob(cursor.getColumnIndexOrThrow("fimage"))
+            Image = cursor.getBlob(cursor.getColumnIndexOrThrow("fimg"))
             val bitmap: Bitmap = BitmapFactory.decodeByteArray(Image,0,Image.size)
             var Name = cursor.getString((cursor.getColumnIndexOrThrow("fName"))).toString()
-            var Menu = cursor.getString((cursor.getColumnIndexOrThrow("fMenu"))).toString()
+            var Menu = cursor.getString((cursor.getColumnIndexOrThrow("fLoc"))).toString()
             list.add(ListViewItem(bitmap,Name,Menu))
 
         }
@@ -103,17 +103,17 @@ class FoodFragment : Fragment() {
 
             if (str_text != "") {
                 cursor =
-                    sqlitedb.rawQuery("SELECT * FROM food WHERE fName = '" + str_text + "';", null)
+                    sqlitedb.rawQuery("SELECT * FROM food WHERE fName LIKE '%" + str_text + "%';", null)
             } else {
                 cursor = sqlitedb.rawQuery("SELECT * FROM food;", null)
             }
 
 
             while(cursor.moveToNext()) {
-                Image = cursor.getBlob(cursor.getColumnIndexOrThrow("fimage"))
+                Image = cursor.getBlob(cursor.getColumnIndexOrThrow("fimg"))
                 val bitmap: Bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.size)
                 var Name = cursor.getString((cursor.getColumnIndexOrThrow("fName"))).toString()
-                var Menu = cursor.getString((cursor.getColumnIndexOrThrow("fMenu"))).toString()
+                var Menu = cursor.getString((cursor.getColumnIndexOrThrow("fLoc"))).toString()
                 list.add(ListViewItem(bitmap, Name, Menu))
             }
 
@@ -138,9 +138,6 @@ class FoodFragment : Fragment() {
             binding.bottomFoodPanel.panelState = SlidingUpPanelLayout.PanelState.EXPANDED
 
         }
-
-
-
 
 
 

@@ -61,12 +61,13 @@ class ShelterFragment : Fragment() {
         sqlitedb = dbManager.writableDatabase
 
         var cursor: Cursor
-        cursor = sqlitedb.rawQuery("SELECT * FROM food ;", null)
+        cursor = sqlitedb.rawQuery("SELECT * FROM cloth ;", null)
 
         while(cursor.moveToNext()){
-            var building = cursor.getString((cursor.getColumnIndexOrThrow("fName"))).toString()
-            var classroom = cursor.getString((cursor.getColumnIndexOrThrow("fMenu"))).toString()
-            list.add(ListViewItem_s(building,classroom))
+            var building = cursor.getString((cursor.getColumnIndexOrThrow("cName"))).toString()
+            //var classroom = cursor.getString((cursor.getColumnIndexOrThrow("fLoc"))).toString()
+            //list.add(ListViewItem_s(building,classroom)
+                    list.add(ListViewItem_s(building,building))
         }
 
         val listView1: ListView = binding.listView
@@ -91,20 +92,20 @@ class ShelterFragment : Fragment() {
             if (str_text != "") {
                 cursor =
                     sqlitedb.rawQuery(
-                        "SELECT * FROM food WHERE fName LIKE '%" + str_text + "%'",
+                        "SELECT * FROM cloth WHERE cName LIKE '%" + str_text + "%'",
                         null
                     )
             } else {
-                cursor = sqlitedb.rawQuery("SELECT * FROM food;", null)
+                cursor = sqlitedb.rawQuery("SELECT * FROM cloth;", null)
             }
 
 
             while (cursor.moveToNext()) {
                 var building =
-                    cursor.getString((cursor.getColumnIndexOrThrow("fName"))).toString()
-                var classroom =
-                    cursor.getString((cursor.getColumnIndexOrThrow("fMenu"))).toString()
-                list.add(ListViewItem_s(building, classroom))
+                    cursor.getString((cursor.getColumnIndexOrThrow("cName"))).toString()
+               // var classroom = cursor.getString((cursor.getColumnIndexOrThrow("fLoc"))).toString()
+                //list.add(ListViewItem_s(building, classroom))
+                list.add(ListViewItem_s(building,building))
             }
 
             val listView2: ListView = binding.listView

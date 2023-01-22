@@ -20,6 +20,14 @@
             android:exported="false"
             android:label="@string/title_activity_login2" />
         <activity
+            android:name=".ui.clothing.ClothNextActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".member.LoginActivity"
             android:exported="true" />
         <activity
