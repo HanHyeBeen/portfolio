@@ -11,13 +11,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.GridView
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.guru16application.MainActivity
 import com.example.guru16application.databinding.FragmentHomeBinding
 import com.example.guru16application.databinding.FragmentShelterBinding
 import com.example.guru16application.ui.ProductDBHelper
+import com.example.guru16application.ui.clothing.GriViewAdapter
+import com.example.guru16application.ui.clothing.ReViewItem
 import com.example.guru16application.ui.food.ListViewAdapter
 import com.example.guru16application.ui.food.ListViewItem
 
@@ -33,6 +37,11 @@ class ShelterFragment : Fragment() {
         super.onAttach(context)
         mainActivity = context as MainActivity
     }
+
+    lateinit var dbManager: ProductDBHelper
+    lateinit var sqlitedb: SQLiteDatabase
+
+    var list = arrayListOf<ListViewItem_s>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,10 +59,7 @@ class ShelterFragment : Fragment() {
             textView.text = it
         }*/
 
-        lateinit var dbManager: ProductDBHelper
-        lateinit var sqlitedb: SQLiteDatabase
 
-        var list = arrayListOf<ListViewItem_s>()
 
         //db 관련 코드 : 데이터가 있는 db 접속하기
         dbManager = ProductDBHelper(mainActivity,"food.db")
@@ -78,6 +84,9 @@ class ShelterFragment : Fragment() {
             listView1.adapter = Adapter_1
         }
         sqlitedb.close()
+
+
+
 
         binding.shelterSearchBtn.setOnClickListener {
 
@@ -130,5 +139,43 @@ class ShelterFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun check(string: String): Int {
+
+        list.clear()
+
+        dbManager = ProductDBHelper(mainActivity, "food.db")
+
+        sqlitedb = dbManager.readableDatabase
+        sqlitedb = dbManager.writableDatabase
+
+        var cursor: Cursor
+        cursor = sqlitedb.rawQuery(string, null)
+
+
+
+        while (cursor.moveToNext()) {
+            var building = cursor.getString((cursor.getColumnIndexOrThrow("cName"))).toString()
+
+            list.add(ListViewItem_s(building,building))
+
+        }
+
+
+        val shelterlistv: ListView = binding.listView
+        val slist: ArrayList<ListViewItem_s> = list
+        val Adapter_s = ListViewAdapter_s(mainActivity, slist)
+        shelterlistv.adapter = Adapter_s
+
+        sqlitedb.close()
+
+        var expandSpec =
+            View.MeasureSpec.makeMeasureSpec(Int.MAX_VALUE shr 2, View.MeasureSpec.AT_MOST)
+        binding.listView.measure(0, expandSpec);
+        var check: Int = binding.listView.getMeasuredHeight()
+        return check
+
+
     }
 }

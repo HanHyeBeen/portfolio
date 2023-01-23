@@ -34,7 +34,8 @@
             <ImageView
                 android:id="@+id/cloth_img"
                 android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_height="350dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/img"
 
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -75,6 +76,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="20dp"
             android:layout_weight="1" >
 
             <LinearLayout
@@ -83,19 +85,22 @@
                 android:orientation="vertical" >
 
         <TextView
+            android:id="@+id/next_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_height="40dp"
             android:text="이름"
-            android:textSize="30dp"
+            android:autoSizeMaxTextSize="28sp"
+            android:autoSizeMinTextSize="20sp"
+            android:autoSizeTextType="uniform"
             android:gravity="center"/>
 
         <TextView
+            android:id="@+id/next_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="13dp"
             android:text="기간"
-            android:textSize="30dp"
+            android:textSize="23sp"
             android:gravity="center"/>
 
 
@@ -109,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="상세보기"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -139,6 +144,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
+                android:textSize="20dp"
                 android:text="설명dddd\n\n\n\n\d\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\n"/>
 
         </LinearLayout>
@@ -153,6 +159,7 @@
             android:layout_height="wrap_content" >
 
             <Button
+                android:id="@+id/Url_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="버튼" />
