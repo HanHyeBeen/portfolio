@@ -16,7 +16,7 @@
         tools:srcCompat="@drawable/mainsymbol" />
 
     <EditText
-        android:id="@+id/edit_email"
+        android:id="@+id/editID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -27,7 +27,7 @@
         android:minHeight="48dp" />
 
     <EditText
-        android:id="@+id/edit_pw"
+        android:id="@+id/editPW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

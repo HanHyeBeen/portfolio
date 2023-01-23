@@ -4,3 +4,4 @@
     android:fromYDelta="-100%"
     android:toYDelta="0%"
     android:interpolator="@android:anim/decelerate_interpolator"/>
+<!-- 왼쪽 안 페이지 슬라이드 애니메이션 효과 -->

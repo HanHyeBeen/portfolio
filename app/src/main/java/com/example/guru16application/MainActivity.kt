@@ -24,18 +24,25 @@ import java.io.FileOutputStream
 import java.io.InputStream
 
 class MainActivity : AppCompatActivity() {
+
+    // ─────────────────────────────────── 변수 선언 ───────────────────────────────────
+    // 내비게이션 프래그먼트
     private lateinit var binding: ActivityMainBinding
+
+    // 데이터베이스
     lateinit var db: SQLiteDatabase
     var filePath: String = "/data/data/com.example.guru16application/databases/"
 
+    // ─────────────────────────────────── 초 기 화 ───────────────────────────────────
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
+        // 내비게이션 프래그먼트와 툴바
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
+        // 데이터베이스
         var check: File = File(filePath + "food.db")
         if (check.exists()) {
 
@@ -47,6 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        // 내비게이션 프래그먼트 : 이동할 페이지 할당
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
@@ -58,23 +66,22 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-
-
-
     }
 
+    // ─────────────────────────────────── 툴바 함수 ───────────────────────────────────
+    // 툴바 초기화
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.top_action_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
+    // 툴바 클릭 이벤트 정의
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when (item?.itemId) {
             R.id.action_settings -> {
                 val settingsFragment = SettingsFragment()
-                show(settingsFragment)
+                show() // *사용자 정의 함수 : 세팅페이지 이동
                 return true
             }
             else -> {
@@ -83,14 +90,14 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-    private fun show(fragment: Fragment) {
+    // *사용자 정의 함수 : show()
+    private fun show() {
         val fragManager = supportFragmentManager.beginTransaction()
 
         fragManager.replace(R.id.nav_host_fragment_activity_main, SettingsFragment()).commit()
-
     }
 
-
+    // ─────────────────────────────────── 데이터베이스 ───────────────────────────────────
     private fun setDB(ctx: Context) {
 
         var folder: File = File(filePath)

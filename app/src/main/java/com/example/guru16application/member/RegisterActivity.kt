@@ -20,10 +20,10 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var dbManager: DBManager
     lateinit var sqlitedb: SQLiteDatabase
 
-    lateinit var addName: EditText
-    lateinit var addTel: EditText
-    lateinit var addMail: EditText
-    lateinit var addPw: EditText
+    lateinit var registerName: EditText
+    lateinit var registerTel: EditText
+    lateinit var registerID: EditText
+    lateinit var registerPW: EditText
     lateinit var btnRegister: Button
 
     val TAG: String = "Register"
@@ -34,10 +34,10 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        addName = findViewById(R.id.addName)
-        addTel = findViewById(R.id.addTel)
-        addMail = findViewById(R.id.addMail)
-        addPw = findViewById(R.id.addPw)
+        registerName = findViewById(R.id.registerName)
+        registerTel = findViewById(R.id.registerTel)
+        registerID = findViewById(R.id.registerID)
+        registerPW = findViewById(R.id.registerPW)
         btnRegister = findViewById(R.id.btnRegister)
 
         dbManager = DBManager(this, "member", null, 1)
@@ -45,13 +45,13 @@ class RegisterActivity : AppCompatActivity() {
         btnRegister.setOnClickListener {
             Log.d(TAG, "회원가입 버튼 클릭")
 
-            val name = addName.text.toString()
-            val tel = addTel.text.toString()
-            val mail = addMail.text.toString()
-            val pw = addPw.text.toString()
+            val name = registerName.text.toString()
+            val tel = registerTel.text.toString()
+            val id = registerID.text.toString()
+            val pw = registerPW.text.toString()
 
             do {
-                if (name.isEmpty() || tel.isEmpty() || mail.isEmpty() || pw.isEmpty()) {
+                if (name.isEmpty() || tel.isEmpty() || id.isEmpty() || pw.isEmpty()) {
                     isExistBlank = true
                 }
 
@@ -59,17 +59,18 @@ class RegisterActivity : AppCompatActivity() {
                     dialog("success")
 
                     // 입력한 정보 저장
-                    var str_name: String = addName.text.toString()
-                    var str_tel: String = addTel.text.toString()
-                    var str_mail: String = addMail.text.toString()
-                    var str_pw: String = addPw.text.toString()
+                    var str_name: String = registerName.text.toString()
+                    var str_tel: String = registerTel.text.toString()
+                    var str_id: String = registerID.text.toString()
+                    var str_pw: String = registerPW.text.toString()
 
                     sqlitedb = dbManager.writableDatabase
+                    // 칼럼 제목 : name / tel / id / pw
                     sqlitedb.execSQL(
                         "INSERT INTO member VALUES ('"
-                                + str_name + "',"
-                                + str_tel + "',"
-                                + str_mail + "',"
+                                + str_name + "','"
+                                + str_tel + "','"
+                                + str_id + "','"
                                 + str_pw + "')"
                     )
                     sqlitedb.close()

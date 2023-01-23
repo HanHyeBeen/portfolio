@@ -15,8 +15,7 @@ class DBManager(
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        db!!.execSQL("DROP TABLE IF EXISTS member")
-        onCreate(db)
+
     }
 
 
