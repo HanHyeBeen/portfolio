@@ -4,7 +4,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class ProductDBHelper(context: Context?, name: String?) : SQLiteOpenHelper(context, "food.db", null, 1) {
+class ProductDBHelper(context: Context?, name: String?) : SQLiteOpenHelper(context, name, null, 1) {
     override fun onCreate(db: SQLiteDatabase) {
         // TODO Auto-generated method stub
     }
