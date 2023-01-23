@@ -49,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
         btn_login.setOnClickListener {
             var intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            /*var inputID = editID.text.toString()
+            var inputID = editID.text.toString()
             var inputPW = editPW.text.toString()
 
             dbManager = DBManager(this, "memberDB", null, 1)
@@ -91,7 +91,7 @@ class LoginActivity : AppCompatActivity() {
             else
             {
                 Toast.makeText(applicationContext, "등록된 아이디가 없습니다", Toast.LENGTH_SHORT).show()
-            }*/
+            }
         }
 
         // ───────────────────────── 이벤트 정의 : 가입 버튼 ─────────────────────────
