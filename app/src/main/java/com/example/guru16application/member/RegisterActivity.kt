@@ -17,14 +17,14 @@ import android.widget.Toast
 import com.example.guru16application.R
 
 class RegisterActivity : AppCompatActivity() {
-    lateinit var dbManager: DBManager
-    lateinit var sqlitedb: SQLiteDatabase
+    private lateinit var dbManager: DBManager
+    private lateinit var sqlitedb: SQLiteDatabase
 
-    lateinit var registerName: EditText
-    lateinit var registerTel: EditText
-    lateinit var registerID: EditText
-    lateinit var registerPW: EditText
-    lateinit var btnRegister: Button
+    private lateinit var registerName: EditText
+    private lateinit var registerTel: EditText
+    private lateinit var registerID: EditText
+    private lateinit var registerPW: EditText
+    private lateinit var btnRegister: Button
 
     val TAG: String = "Register"
     var isExistBlank = false
@@ -40,7 +40,7 @@ class RegisterActivity : AppCompatActivity() {
         registerPW = findViewById(R.id.registerPW)
         btnRegister = findViewById(R.id.btnRegister)
 
-        dbManager = DBManager(this, "member", null, 1)
+        dbManager = DBManager(this, "memberDB", null, 1)
 
         btnRegister.setOnClickListener {
             Log.d(TAG, "회원가입 버튼 클릭")
@@ -65,22 +65,21 @@ class RegisterActivity : AppCompatActivity() {
                     var str_pw: String = registerPW.text.toString()
 
                     sqlitedb = dbManager.writableDatabase
-                    // 칼럼 제목 : name / tel / id / pw
+                    // 칼럼 제목 : name / phone / id PRIMARY KEY/ pw
                     sqlitedb.execSQL(
-                        "INSERT INTO member VALUES ('"
+                        "INSERT INTO memberTBL VALUES ('"
                                 + str_name + "','"
                                 + str_tel + "','"
                                 + str_id + "','"
                                 + str_pw + "')"
                     )
                     sqlitedb.close()
+                    dbManager.close()
 
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
                 } else {
-                    if (isExistBlank) {   // 작성 안한 항목이 있을 경우 다이얼로그
-                        dialog("blank")
-                    }
+                    dialog("blank")
                 }
             } while (isExistBlank)
         }
@@ -97,12 +96,10 @@ class RegisterActivity : AppCompatActivity() {
             dialog.setMessage("로그인 후 이용하세요")
         }
 
-        val dialog_listener = object: DialogInterface.OnClickListener{
-            override fun onClick(dialog: DialogInterface?, which: Int) {
-                when(which){
-                    DialogInterface.BUTTON_POSITIVE ->
-                        Log.d(TAG, "다이얼로그")
-                }
+        val dialog_listener = DialogInterface.OnClickListener { dialog, which ->
+            when(which){
+                DialogInterface.BUTTON_POSITIVE ->
+                    Log.d(TAG, "다이얼로그")
             }
         }
 
