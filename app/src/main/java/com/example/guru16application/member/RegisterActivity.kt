@@ -4,16 +4,11 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
 import com.example.guru16application.R
 
 class RegisterActivity : AppCompatActivity() {
@@ -28,7 +23,6 @@ class RegisterActivity : AppCompatActivity() {
 
     val TAG: String = "Register"
     var isExistBlank = false
-    var isPWSame = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
