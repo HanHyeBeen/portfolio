@@ -7,4 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    //(피그마 화면 색상 기준) 전용 색상
+    <color name="swu_purple">#A53135</color>
+    <color name="swu_blue">#25408F</color>
+    <color name="swu_yellow">#FCB814</color>
+    <color name="swu_silver">#B2B3B7</color>
+    <color name="swu_gold">#AEA17D</color>
+    <color name="swu_gray1">#BCBDC0</color>
+    <color name="swu_gray2">#6C6D70</color>
 </resources>
