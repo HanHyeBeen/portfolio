@@ -10,6 +10,7 @@ class DBManager(
     factory: SQLiteDatabase.CursorFactory?,
     version: Int
 ) : SQLiteOpenHelper(context, name, factory, version) {
+
     override fun onCreate(db: SQLiteDatabase?) {
         db!!.execSQL("CREATE TABLE memberTBL (name text, phone text, id text PRIMARY KEY, pw text)")
     }
