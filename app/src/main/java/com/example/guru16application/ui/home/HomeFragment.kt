@@ -1,23 +1,24 @@
 package com.example.guru16application.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.guru16application.databinding.FragmentHomeBinding
+import com.example.guru16application.ui.home.api.Constants.Companion.TAG
+import com.example.guru16application.ui.home.api.WeatherViewModel
 
 class HomeFragment : Fragment() {
 
     // ──────────────────────────────────────────────────────────── 프래그먼트 초기화
 
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -28,6 +29,9 @@ class HomeFragment : Fragment() {
         val homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
+        // weather view
+        val weatherViewModel by viewModels<WeatherViewModel>()
+
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -35,6 +39,13 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+//         오류 코드
+//        weatherViewModel.getWeather("JSON", 14, 1, 20220322, 1100, "63", "89")
+//        weatherViewModel.weatherResponse.observe(viewLifecycleOwner){
+//            for(i in it.body()?.response!!.body.items.item){
+//                Log.d(TAG, "$i")
+//            }
+//        }
         return root
     }
 
@@ -43,6 +54,6 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    // ──────────────────────────────────────────────────────────── 프래그먼트 초기화 끝
+
 
 }

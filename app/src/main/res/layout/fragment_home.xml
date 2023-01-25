@@ -1,12 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
+    <!-- ─────────────────────── 첫 번째 줄 ─────────────────────── -->
+    <LinearLayout
+        android:id="@+id/homeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/weatherImageView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:paddingTop= "5dp"
+            android:src="@drawable/ic_baseline_wb_sunny_24"/>
+
+        <LinearLayout
+            android:id="@+id/homeLayout1_1"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00월 00일"
+                android:paddingLeft="5dp"
+                android:layout_marginTop="6dp"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/temperatureTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:text="00℃"
+                android:layout_gravity="top"
+                android:textAlignment="gravity"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- ─────────────────────── 두 번째 줄 ─────────────────────── -->
+
+    <LinearLayout
+        android:id="@+id/homeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:padding="10dp"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:id="@+id/homeLayout2_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="오늘 옷차림" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <!-- ─────────────────────── 세 번째 줄 ─────────────────────── -->
+
+    <LinearLayout
+        android:id="@+id/homeLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+
+    </LinearLayout>
+
+    <!-- ─────────────────────── 네 번째 줄 ─────────────────────── -->
     <TextView
         android:id="@+id/text_home"
         android:layout_width="match_parent"
@@ -15,9 +110,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textSize="20sp" />
+
+</LinearLayout>
+
+

@@ -1,0 +1,28 @@
+package com.example.guru16application.ui.home.api
+
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import retrofit2.Response
+import javax.inject.Inject
+
+@HiltViewModel
+class WeatherViewModel @Inject constructor(
+    private val repository: WeatherRepository
+) : ViewModel() {
+
+    private val _weatherResponse :
+            MutableLiveData<Response<Weather>> = MutableLiveData()
+
+    val weatherResponse get() = _weatherResponse
+
+    fun getWeather(dateType : String, numOfRows : Int, pageNo : Int, baseDate : Int, baseTime : Int, nx : String, ny : String){
+        viewModelScope.launch {
+            val response = repository.getWeather(dateType, numOfRows, pageNo, baseDate, baseTime, nx, ny)
+            _weatherResponse.value = response
+        }
+    }
+
+}
