@@ -25,10 +25,13 @@
 
     <TextView
         android:id="@+id/txt_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
         android:text="월계수학잠"
-        android:textSize="20sp"
+        android:textSize="15sp"
+        android:autoSizeMaxTextSize="18sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeTextType="uniform"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
         android:layout_below="@id/cardview" />

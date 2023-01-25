@@ -25,7 +25,7 @@ class ListViewAdapter(val context: Context, val list: ArrayList<ListViewItem>): 
 
         var fImage :ImageView = view!!.findViewById(R.id.foodImage)
         var fName : TextView = view.findViewById(R.id.foodName)
-        var fMenu : TextView = view.findViewById(R.id.foodMenu)
+        var fMenu : TextView = view.findViewById(R.id.foodLoc)
 
         val items = list[position]
 

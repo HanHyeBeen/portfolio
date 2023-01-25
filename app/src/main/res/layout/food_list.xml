@@ -10,6 +10,7 @@
                 android:id="@+id/foodImage"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
+            android:layout_marginLeft="5dp"
                 android:src="@drawable/img"/>
 
             <RelativeLayout
@@ -22,15 +23,32 @@
                 <TextView
                     android:id="@+id/foodName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
+                    android:autoSizeMaxTextSize="24sp"
+                    android:autoSizeMinTextSize="19sp"
+                    android:autoSizeTextType="uniform"
+                    android:layout_marginBottom="10dp"
                     android:text="비틀주스" />
 
                 <TextView
-                    android:id="@+id/foodMenu"
+                    android:id="@+id/foodLoc"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="꼬숩미라떼"
+                    android:layout_height="20dp"
+                    android:text="위치"
+                    android:autoSizeMaxTextSize="15sp"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeTextType="uniform"
                     android:layout_below="@+id/foodName"/>
+
+                <TextView
+                    android:id="@+id/foodTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:text="꼬숩미라떼"
+                    android:autoSizeMaxTextSize="15sp"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeTextType="uniform"
+                    android:layout_below="@+id/foodLoc"/>
 
             </RelativeLayout>
 

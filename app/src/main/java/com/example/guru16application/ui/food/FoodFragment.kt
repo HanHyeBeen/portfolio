@@ -76,8 +76,8 @@ class FoodFragment : Fragment() {
             Image = cursor.getBlob(cursor.getColumnIndexOrThrow("fimg"))
             val bitmap: Bitmap = BitmapFactory.decodeByteArray(Image,0,Image.size)
             var Name = cursor.getString((cursor.getColumnIndexOrThrow("fName"))).toString()
-            var Menu = cursor.getString((cursor.getColumnIndexOrThrow("fLoc"))).toString()
-            list.add(ListViewItem(bitmap,Name,Menu))
+            var Loc = cursor.getString((cursor.getColumnIndexOrThrow("fLoc"))).toString()
+            list.add(ListViewItem(bitmap,Name,Loc ))
 
         }
 
@@ -113,8 +113,8 @@ class FoodFragment : Fragment() {
                 Image = cursor.getBlob(cursor.getColumnIndexOrThrow("fimg"))
                 val bitmap: Bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.size)
                 var Name = cursor.getString((cursor.getColumnIndexOrThrow("fName"))).toString()
-                var Menu = cursor.getString((cursor.getColumnIndexOrThrow("fLoc"))).toString()
-                list.add(ListViewItem(bitmap, Name, Menu))
+                var Loc  = cursor.getString((cursor.getColumnIndexOrThrow("fLoc"))).toString()
+                list.add(ListViewItem(bitmap, Name, Loc ))
             }
 
             val listView2: ListView = binding.listView

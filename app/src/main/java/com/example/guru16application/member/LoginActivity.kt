@@ -47,7 +47,8 @@ class LoginActivity : AppCompatActivity() {
         // ───────────────────────── 이벤트 정의 : 로그인 버튼 ─────────────────────────
 
         btn_login.setOnClickListener {
-
+            var intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
             var inputID = editID.text.toString()
             var inputPW = editPW.text.toString()
 

@@ -19,15 +19,26 @@
         <!-- API 연결을 위한 인터넷 사용 권한 추가 ↑ 2
         android:name="" 추가 -->
         <activity
+            android:name=".ui.ImgShowActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".member.Mypage"
             android:exported="false" />
+        <activity
+            android:name=".ui.clothing.ClothNextActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".member.RegisterActivity"
-            android:parentActivityName=".member.LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".member.LoginActivity" />
         <activity
             android:name=".member.LoginActivity"
             android:exported="true">
