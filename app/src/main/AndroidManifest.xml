@@ -35,7 +35,7 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.home.api.TestActivity"
             android:exported="false" />
         <activity
             android:name=".member.RegisterActivity"
@@ -44,7 +44,7 @@
         <activity android:name=".member.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.home.api.TestActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

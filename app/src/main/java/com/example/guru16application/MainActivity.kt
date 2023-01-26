@@ -84,9 +84,7 @@ class MainActivity : AppCompatActivity() {
                 show() // *사용자 정의 함수 : 세팅페이지 이동
                 return true
             }
-            else -> {
-                return true
-            }
+            else -> false
         }
         return super.onOptionsItemSelected(item)
     }

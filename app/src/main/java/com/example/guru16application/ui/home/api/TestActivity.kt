@@ -24,7 +24,7 @@ class TestActivity : AppCompatActivity() {
         binding = setContentView(this, R.layout.activity_test)
         binding.lifecycleOwner = this
 
-        viewModel.getWeather("JSON", 20, 1, "20230126", "0800", 62, 128)
+        viewModel.getWeather("JSON", 20, 1, "20230126", "1230", 62, 128)
 
         viewModel.weatherResponse.observe(this) {
             for (i in it.body()?.response!!.body.items.item) {
