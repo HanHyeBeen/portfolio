@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface WeatherAPI {
 
-    @GET("getUltraSrtNcst?serviceKey=$API_KEY")
+    @GET("getUltraSrtFcst?serviceKey=$API_KEY")
     suspend fun getWeather(
         @Query("dataType") dataType : String,
         @Query("numOfRows") numOfRows : Int,
