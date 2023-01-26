@@ -18,11 +18,13 @@ class WeatherViewModel @Inject constructor(
 
     val weatherResponse get() = _weatherResponse
 
-    fun getWeather(dateType : String, numOfRows : Int, pageNo : Int, baseDate : Int, baseTime : Int, nx : String, ny : String){
+    fun getWeather(dataType : String, numOfRows : Int, pageNo : Int,
+                   baseDate : String, baseTime : String, nx : Int, ny : Int) {
         viewModelScope.launch {
-            val response = repository.getWeather(dateType, numOfRows, pageNo, baseDate, baseTime, nx, ny)
+            val response = repository.getWeather(dataType, numOfRows, pageNo, baseDate, baseTime, nx, ny)
             _weatherResponse.value = response
         }
     }
+
 
 }

@@ -4,7 +4,8 @@
 
     <!-- API 연결을 위한 인터넷 사용 권한 추가 1 -->
     <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"
+/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,12 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Guru16Application"
         tools:targetApi="31"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:name=".ui.home.api.WeatherApplication">
         <!-- API 연결을 위한 인터넷 사용 권한 추가 ↑ 2
         android:name="" 추가 -->
         <activity
             android:name=".ui.ImgShowActivity"
-            android:exported="true">
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -39,8 +41,10 @@
             android:name=".member.RegisterActivity"
             android:exported="false"
             android:parentActivityName=".member.LoginActivity" />
+        <activity android:name=".member.LoginActivity"
+            android:exported="false" />
         <activity
-            android:name=".member.LoginActivity"
+            android:name=".ui.home.api.TestActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

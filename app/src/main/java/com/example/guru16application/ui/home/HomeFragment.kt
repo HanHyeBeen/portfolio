@@ -30,7 +30,7 @@ class HomeFragment : Fragment() {
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
         // weather view
-        val weatherViewModel by viewModels<WeatherViewModel>()
+        //val weatherViewModel by viewModels<WeatherViewModel>()
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
             textView.text = it
         }
 //         오류 코드
-//        weatherViewModel.getWeather("JSON", 14, 1, 20220322, 1100, "63", "89")
+//        weatherViewModel.getWeather("JSON", 3, 1, 20230126, 0800, "62", "128")
 //        weatherViewModel.weatherResponse.observe(viewLifecycleOwner){
 //            for(i in it.body()?.response!!.body.items.item){
 //                Log.d(TAG, "$i")
@@ -53,7 +53,5 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 
 }
