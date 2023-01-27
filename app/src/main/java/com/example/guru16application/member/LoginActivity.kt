@@ -2,7 +2,9 @@ package com.example.guru16application.member
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
+import android.content.res.AssetManager
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +16,10 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.guru16application.MainActivity
 import com.example.guru16application.R
+import com.example.guru16application.ui.ProductDBHelper
+import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
 
 class LoginActivity : AppCompatActivity() {
 
@@ -30,6 +36,8 @@ class LoginActivity : AppCompatActivity() {
     lateinit var str_id : String
     lateinit var str_pw : String
 
+    var filePath: String = "/data/data/com.example.guru16application/databases/"
+
     //val dialog = AlertDialog.Builder(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +50,23 @@ class LoginActivity : AppCompatActivity() {
         btn_register = findViewById(R.id.btn_register)
         autoLogin = findViewById(R.id.autoLogin)
 
+        // 첫 화면에서 db set
+
+        var check: File = File(filePath + "food.db")
+        if (check.exists()) {
+
+        } else {
+
+            setDB(this)
+            val mHelper: ProductDBHelper = ProductDBHelper(this, "food.db")
+            sqlDB = mHelper.writableDatabase
+
+        }
+
+
+
         loadUser2()
+
 
         // ───────────────────────── 이벤트 정의 : 로그인 버튼 ─────────────────────────
 
@@ -159,4 +183,36 @@ class LoginActivity : AppCompatActivity() {
         editor.commit()
     }
     * */
+
+    private fun setDB(ctx: Context) {
+
+
+        var folder: File = File(filePath)
+        if (folder.exists()) {
+        } else {
+            folder.mkdirs();
+        }
+        var assetManager: AssetManager = ctx.resources.assets
+        var outfile: File = File(filePath + "food.db")
+        var IStr: InputStream? = null
+        var fo: FileOutputStream? = null
+        var filesize: Int = 0
+        try {
+            IStr = assetManager.open("food.db", AssetManager.ACCESS_BUFFER)
+            filesize = IStr.available()
+            if (outfile.length() <= 0) {
+                val buffer = ByteArray(filesize)
+
+                IStr.read(buffer)
+                IStr.close()
+                outfile.createNewFile()
+                fo = FileOutputStream(outfile)
+                fo.write(buffer)
+                fo.close()
+            } else {
+            }
+        } finally {
+        }
+    }
+
 }

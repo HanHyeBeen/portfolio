@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         // 데이터베이스
-        var check: File = File(filePath + "food.db")
+       /* var check: File = File(filePath + "food.db")
         if (check.exists()) {
 
         } else {
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             val mHelper: ProductDBHelper = ProductDBHelper(this, "food.db")
             db = mHelper.writableDatabase
 
-        }
+        }*/
 
         // 내비게이션 프래그먼트 : 이동할 페이지 할당
         val navView: BottomNavigationView = binding.navView

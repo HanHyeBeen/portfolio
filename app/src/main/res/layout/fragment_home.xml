@@ -8,6 +8,25 @@
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:id="@+id/bottom_Panel"
+        app:umanoDragView="@id/insertTODO"
+        app:umanoPanelHeight="0dp"
+        app:umanoOverlay="false"
+        app:umanoFadeColor="#00000000"
+        app:umanoParallaxOffset="0dp"
+        app:umanoShadowHeight="0dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
     <!-- ─────────────────────── 첫 번째 줄 ─────────────────────── -->
     <LinearLayout
         android:id="@+id/homeLayout1"
@@ -96,13 +115,108 @@
         android:id="@+id/homeLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp">
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="20dp">
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="TODOlist"
+                        android:textSize="32dp" />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:id="@+id/todore"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="right"
+                        android:background="@color/white"
+                        android:src="@drawable/ic_baseline_restart_alt_24" />
+
+
+                    <ImageButton
+                        android:id="@+id/todoadd"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="right"
+                        android:background="@color/white"
+                        android:src="@drawable/ic_baseline_add_24" />
+
+
+                </LinearLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recy"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+
+
+            </LinearLayout>
 
     </LinearLayout>
 
+    </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/insertTODO"
+                android:background="@color/swu_gray1"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:orientation="vertical">
+
+
+                <Button
+                    android:layout_gravity="right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:text="등록"
+                    android:id="@+id/TodoBtn" />
+
+
+                <EditText
+                    android:id="@+id/TodoEdt"
+                    android:layout_gravity="center"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="오늘의 할 일을 입력하세요!"
+                    android:textSize="15sp" />
+
+
+            </LinearLayout>
+
+
+        </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+    </LinearLayout>
+
+
+
     <!-- ─────────────────────── 네 번째 줄 ─────────────────────── -->
-    <TextView
+    <!--<TextView
         android:id="@+id/text_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -111,7 +225,7 @@
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
         android:textSize="20sp" />
-
-</LinearLayout>
+>
+</LinearLayout>-->
 
 
