@@ -91,7 +91,7 @@ class ClothNextActivity : AppCompatActivity() {
 
         var nextext = intent.getStringExtra("searchName")
 
-        Toast.makeText(this,"결과 : $nextext",Toast.LENGTH_SHORT).show()
+
 
         //검색한 거 적용하기
 

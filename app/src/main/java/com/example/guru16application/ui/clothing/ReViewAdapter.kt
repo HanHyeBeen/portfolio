@@ -40,7 +40,6 @@ class ReViewAdapter (val context: Context, val Relist: ArrayList<ReViewItem>): R
 
         holder.apply {
             bind(citem, context, View.OnClickListener {
-                Toast.makeText(context, "${citem.name}", Toast.LENGTH_SHORT).show()
                 //이동할 intent
                 var intent: Intent = Intent(context,ClothNextActivity::class.java)
                 intent.putExtra("searchName", citem.name)
