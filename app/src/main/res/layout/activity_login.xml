@@ -10,11 +10,11 @@
 
     <!--로고-->
     <ImageView
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        tools:srcCompat="@drawable/mainsymbol" />
+        tools:srcCompat="@drawable/logo" />
 
     <EditText
         android:id="@+id/editID"
@@ -24,7 +24,7 @@
         android:layout_marginTop="10dp"
         android:ems="12"
         android:hint="아이디"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:minHeight="48dp" />
 
     <EditText
@@ -39,10 +39,10 @@
 
     <CheckBox
         android:id="@+id/autoLogin"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="60dp"
+        android:ems="15"
         android:text="자동 로그인" />
 
     <Button
