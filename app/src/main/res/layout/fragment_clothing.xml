@@ -60,6 +60,17 @@
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:id="@+id/cloth_no1"
+                    android:text="검색 결과가 없습니다."
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="30dp"
+                    android:textSize="30dp"
+                    android:visibility="gone" />
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -80,6 +91,17 @@
                     android:horizontalSpacing="10dp"
                     android:verticalSpacing="10dp"
                     android:numColumns="3" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:id="@+id/cloth_no2"
+                    android:text="검색 결과가 없습니다."
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="30dp"
+                    android:textSize="30dp"
+                    android:visibility="gone" />
 
 
 

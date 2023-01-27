@@ -67,17 +67,29 @@ class ClothingFragment : Fragment() {
         Relist.clear()
         Grlist.clear()
 
-        var cursor: Cursor
-        cursor = sqlitedb.rawQuery("SELECT * FROM cloth ;", null)
+        var cursor_r: Cursor
+        cursor_r = sqlitedb.rawQuery("SELECT * FROM cloth WHERE cType = 1;", null)
+
+        var cursor_g: Cursor
+        cursor_g = sqlitedb.rawQuery("SELECT * FROM cloth WHERE cType = 2;", null)
 
 
 
-        while (cursor.moveToNext()) {
-            Image = cursor.getBlob(cursor.getColumnIndexOrThrow("cMainimg"))
+        while (cursor_r.moveToNext()) {
+            Image = cursor_r.getBlob(cursor_r.getColumnIndexOrThrow("cMainimg"))
             val bitmap: Bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.size)
-            var Name = cursor.getString((cursor.getColumnIndexOrThrow("cName"))).toString()
+            var Name = cursor_r.getString((cursor_r.getColumnIndexOrThrow("cName"))).toString()
 
             Relist.add(ReViewItem(bitmap, Name))
+
+
+        }
+
+        while (cursor_g.moveToNext()) {
+            Image = cursor_g.getBlob(cursor_g.getColumnIndexOrThrow("cMainimg"))
+            val bitmap: Bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.size)
+            var Name = cursor_g.getString((cursor_g.getColumnIndexOrThrow("cName"))).toString()
+
             Grlist.add(ReViewItem(bitmap, Name))
 
         }
@@ -104,7 +116,7 @@ class ClothingFragment : Fragment() {
         var expandSpec =
             View.MeasureSpec.makeMeasureSpec(Int.MAX_VALUE shr 2, View.MeasureSpec.AT_MOST)
         binding.clothGrid.measure(0, expandSpec)
-        binding.clothGrid.getLayoutParams().height = check("SELECT * FROM cloth ;")
+        binding.clothGrid.getLayoutParams().height = check("SELECT * FROM cloth WHERE cType = 2;")
 
 
         //버튼 클릭 시 이벤트
@@ -120,51 +132,76 @@ class ClothingFragment : Fragment() {
             sqlitedb = dbManager.writableDatabase
 
 
-            var cursor: Cursor
-            cursor = sqlitedb.rawQuery(
-                "SELECT * FROM cloth WHERE cName LIKE '%" + cloth_text + "%';",
-                null
-            )
-            //cursor = sqlitedb.rawQuery("SELECT * FROM food ;", null)
+            var cursor_rs: Cursor
+            cursor_rs = sqlitedb.rawQuery("SELECT * FROM cloth WHERE cType = 1 AND (cName LIKE '%" + cloth_text + "%' OR cMore LIKE '%" + cloth_text + "%');", null)
 
-            while (cursor.moveToNext()) {
-                Image = cursor.getBlob(cursor.getColumnIndexOrThrow("cMainimg"))
-                val bitmap: Bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.size)
-                var Name = cursor.getString((cursor.getColumnIndexOrThrow("cName"))).toString()
+            var cursor_gs: Cursor
+            cursor_gs = sqlitedb.rawQuery("SELECT * FROM cloth WHERE cType = 2 AND (cName LIKE '%" + cloth_text + "%' OR cMore LIKE '%" + cloth_text + "%');", null)
 
-                Relist.add(ReViewItem(bitmap, Name))
-                Grlist.add(ReViewItem(bitmap, Name))
+            if(cursor_rs.count > 0){
+                binding.clothNo1.visibility = View.GONE
+                binding.recyclerHorizon.visibility = View.VISIBLE
+
+                while (cursor_rs.moveToNext()) {
+                    Image = cursor_rs.getBlob(cursor_rs.getColumnIndexOrThrow("cMainimg"))
+                    val bitmap: Bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.size)
+                    var Name = cursor_rs.getString((cursor_rs.getColumnIndexOrThrow("cName"))).toString()
+
+                    Relist.add(ReViewItem(bitmap, Name))
+
+                }
+
+                val recyler2: RecyclerView = binding.recyclerHorizon
+                clothingViewModel.clothlist.observe(viewLifecycleOwner) {
+
+                    val relist_c: ArrayList<ReViewItem> = Relist
+                    val Adapter_2 = ReViewAdapter(mainActivity, relist_c)
+                    recyler2.adapter = Adapter_2
+                }
+            } else {
+                binding.clothNo1.visibility = View.VISIBLE
+                binding.recyclerHorizon.visibility = View.GONE
             }
 
-            clothingViewModel.clothlist.observe(viewLifecycleOwner) {
+            if(cursor_gs.count > 0){
+                binding.clothNo2.visibility = View.GONE
+                binding.clothGrid.visibility = View.VISIBLE
 
-                val relist_c: ArrayList<ReViewItem> = Relist
-                val Adapter_2 = ReViewAdapter(mainActivity, relist_c)
-                recyler.adapter = Adapter_2
-            }
 
-            val gridcloth2: GridView = binding.clothGrid
+                while (cursor_gs.moveToNext()) {
 
-            clothingViewModel.clothlist.observe(viewLifecycleOwner) {
+                    Image = cursor_gs.getBlob(cursor_gs.getColumnIndexOrThrow("cMainimg"))
+                    val bitmap: Bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.size)
+                    var Name = cursor_gs.getString((cursor_gs.getColumnIndexOrThrow("cName"))).toString()
 
-                val glist_c: ArrayList<ReViewItem> = Grlist
-                val Adapter_3 = GriViewAdapter(mainActivity, glist_c)
-                gridcloth2.adapter = Adapter_3
-            }
+                    Grlist.add(ReViewItem(bitmap, Name))
+                }
 
-            var number: Int = Grlist.size
+                    val gridcloth2: GridView = binding.clothGrid
+
+                    clothingViewModel.clothlist.observe(viewLifecycleOwner) {
+
+                        val glist_c: ArrayList<ReViewItem> = Grlist
+                        val Adapter_3 = GriViewAdapter(mainActivity, glist_c)
+                        gridcloth2.adapter = Adapter_3
+                    }
+
+
+                    var sqlsen: String = "SELECT * FROM cloth WHERE cType = 2 AND (cName LIKE '%$cloth_text%' OR cMore LIKE '%$cloth_text%');"
+
+
+                    //사이즈 조절
+                    var expandSpec = View.MeasureSpec.makeMeasureSpec(Int.MAX_VALUE shr 2, View.MeasureSpec.AT_MOST)
+                    binding.clothGrid.measure(0, expandSpec)
+                    check(sqlsen)
+                    binding.clothGrid.getLayoutParams().height = check(sqlsen)
+
+                } else {
+                binding.clothNo2.visibility = View.VISIBLE
+                binding.clothGrid.visibility = View.GONE }
+
 
             sqlitedb.close()
-
-            var sqlsen: String = "SELECT * FROM cloth WHERE cName LIKE '%$cloth_text%';"
-
-
-            //사이즈 조절
-            var expandSpec =
-                View.MeasureSpec.makeMeasureSpec(Int.MAX_VALUE shr 2, View.MeasureSpec.AT_MOST)
-            binding.clothGrid.measure(0, expandSpec)
-            check(sqlsen)
-            binding.clothGrid.getLayoutParams().height = check(sqlsen)
 
         }
 
@@ -172,7 +209,7 @@ class ClothingFragment : Fragment() {
         binding.clothGrid.setOnItemClickListener { adapterView, view, i, l ->
             var item:ReViewItem = Grlist[i]
             val sname = item.name
-            Toast.makeText(activity, "$sname", Toast.LENGTH_SHORT).show()
+
             //액티비티와 프래그먼트 연결
             var intent: Intent = Intent(context,ClothNextActivity::class.java)
             intent.putExtra("searchName",sname)
