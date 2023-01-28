@@ -1,23 +1,14 @@
 package com.example.guru16application.ui.home
 
 import android.content.Context
-import android.content.Intent
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
-import com.example.guru16application.MainActivity
 import com.example.guru16application.R
 import com.example.guru16application.ui.ProductDBHelper
-import com.example.guru16application.ui.clothing.ClothNextActivity
-import kotlinx.coroutines.NonDisposableHandle.parent
 
 
 class TodoViewAdapter (val context: Context, val Relist: ArrayList<TodoViewItem>): RecyclerView.Adapter<TodoViewAdapter.ViewHolder>() {
@@ -33,14 +24,12 @@ class TodoViewAdapter (val context: Context, val Relist: ArrayList<TodoViewItem>
 
             todo?.text = room.name
             todore?.setOnClickListener(onClickListener)
-
-
         }
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.todo_list,parent,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.fragment_home_todo_list,parent,false)
 
         return ViewHolder(view)
     }

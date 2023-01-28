@@ -25,6 +25,8 @@ import com.example.guru16application.ui.clothing.ReViewItem
 import com.example.guru16application.ui.food.ListViewAdapter
 import com.example.guru16application.ui.food.ListViewItem
 
+// 주 tab 메인
+
 class ShelterFragment : Fragment() {
 
     private var _binding: FragmentShelterBinding? = null

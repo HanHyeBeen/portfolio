@@ -29,6 +29,9 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
 
+// 홈 tab 메인
+// 기능 : 날씨 API, todo list 작성
+
 class HomeFragment : Fragment() {
 
     // ──────────────────────────────────────────────────────────── 프래그먼트 초기화

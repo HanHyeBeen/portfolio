@@ -18,6 +18,8 @@ import com.example.guru16application.databinding.FragmentFoodBinding.*
 import com.example.guru16application.ui.ProductDBHelper
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 
+// 식 tab 메인
+
 class FoodFragment : Fragment() {
 
     private var _binding: FragmentFoodBinding? = null

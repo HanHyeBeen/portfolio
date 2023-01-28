@@ -24,6 +24,7 @@ import com.example.guru16application.databinding.FragmentClothingBinding
 import com.example.guru16application.member.Mypage
 
 
+// 의 tab 메인
 class ClothingFragment : Fragment() {
 
     private var _binding: FragmentClothingBinding? = null
