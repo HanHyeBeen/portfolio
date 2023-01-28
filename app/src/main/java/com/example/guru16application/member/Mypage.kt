@@ -9,6 +9,8 @@ class Mypage : AppCompatActivity() {
     lateinit var btn_logout: Button
     lateinit var btn_delete: Button
 
+    // 뒤로가기 버튼 살리기
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mypage)

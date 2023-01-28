@@ -13,6 +13,8 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -62,7 +64,14 @@ class ClothingFragment : Fragment() {
 
         val button : Button = binding.btnCreate
         button.setOnClickListener {
-
+            val requestLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult())
+        {
+            it.data!!.getStringExtra("result")?.let {
+               // datas?.add(it)
+               // adapter.notifyDataSetChanged()
+            }
+        }
         }
 
         // 보일 아이템 검색
@@ -282,6 +291,15 @@ class ClothingFragment : Fragment() {
         return check
 
 
+    }
+
+    // ───────────────────────────── 글쓰기버튼 인텐트 처리 ─────────────────────────────
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+            //if(requestCode == 0 && resultCode == Activity.R) {
+            //val result = data?.getString("resultData")
+        //}
     }
 
 

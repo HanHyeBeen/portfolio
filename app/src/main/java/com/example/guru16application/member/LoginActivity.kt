@@ -108,6 +108,8 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, "$str_name 님 환영합니다", Toast.LENGTH_SHORT).show()
 
                         var intent = Intent(this, MainActivity::class.java)
+                        intent.putExtra("memberName", str_name)
+                        intent.putExtra("memberID", str_id)
                         startActivity(intent)
                         finish()
                     }

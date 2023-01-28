@@ -17,7 +17,6 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.guru16application.databinding.ActivityMainBinding
 import com.example.guru16application.member.Mypage
-import com.example.guru16application.ui.settings.SettingsFragment
 import com.example.guru16application.ui.ProductDBHelper
 import com.example.guru16application.ui.shelter.ShelterFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -38,6 +37,9 @@ class MainActivity : AppCompatActivity() {
     // ─────────────────────────────────── 초 기 화 ───────────────────────────────────
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val memberName = intent.getStringExtra("memberName")
+        val memberID = intent.getStringExtra("memberID")
 
         // 내비게이션 프래그먼트와 툴바
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -83,6 +85,7 @@ class MainActivity : AppCompatActivity() {
         return when (item?.itemId) {
             R.id.action_settings -> {
                 val intent = Intent(this, Mypage::class.java)
+                //intent.putExtra("memberID", memberID)
                 startActivity(intent)
                 return true
             }

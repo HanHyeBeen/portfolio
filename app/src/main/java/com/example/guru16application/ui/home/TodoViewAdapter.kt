@@ -17,7 +17,6 @@ import com.example.guru16application.MainActivity
 import com.example.guru16application.R
 import com.example.guru16application.ui.ProductDBHelper
 import com.example.guru16application.ui.clothing.ClothNextActivity
-import com.example.guru16application.ui.settings.SettingsFragment
 import kotlinx.coroutines.NonDisposableHandle.parent
 
 
