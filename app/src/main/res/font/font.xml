@@ -6,4 +6,7 @@
     <font android:fontStyle="normal"
     android:font="@font/nanumsquareroundb"></font>
 
+    <font android:fontStyle="normal"
+        android:font="@font/nanumsquareroundeb"></font>
+
 </font-family>
