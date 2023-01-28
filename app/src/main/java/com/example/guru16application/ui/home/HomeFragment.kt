@@ -117,7 +117,7 @@ class HomeFragment : Fragment() {
                 sqlitedb.execSQL("INSERT INTO todo VALUES ('" + todo_text + "', '" + logid +"');")
 
                 var cursor1: Cursor
-                cursor1 = sqlitedb.rawQuery("SELECT * FROM todo WHERE todo = '"+todo_text+"' AND touser = '"+logid+"';", null)
+                cursor1 = sqlitedb.rawQuery("SELECT * FROM todo WHERE touser = '"+logid+"';", null)
 
                 while (cursor1.moveToNext()) {
 

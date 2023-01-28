@@ -22,6 +22,7 @@ import com.example.guru16application.MainActivity
 import com.example.guru16application.ui.ProductDBHelper
 import com.example.guru16application.databinding.FragmentClothingBinding
 import com.example.guru16application.member.Mypage
+import com.example.guru16application.ui.clothing.Editor.ClothAddActivity
 
 
 // 의 tab 메인
@@ -65,14 +66,16 @@ class ClothingFragment : Fragment() {
 
         val button : Button = binding.btnCreate
         button.setOnClickListener {
-            val requestLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
+            val intent : Intent = Intent(context, ClothAddActivity::class.java)
+            startActivity(intent)
+            /*val requestLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult())
         {
             it.data!!.getStringExtra("result")?.let {
                // datas?.add(it)
                // adapter.notifyDataSetChanged()
             }
-        }
+        }*/
         }
 
         // 보일 아이템 검색
@@ -88,7 +91,7 @@ class ClothingFragment : Fragment() {
         cursor_r = sqlitedb.rawQuery("SELECT * FROM cloth WHERE cType = 1;", null)
 
         var cursor_g: Cursor
-        cursor_g = sqlitedb.rawQuery("SELECT * FROM cloth WHERE cType = 2;", null)
+        cursor_g = sqlitedb.rawQuery("SELECT cMainimg, cName FROM cloth WHERE cType = 2;", null)
 
 
 
