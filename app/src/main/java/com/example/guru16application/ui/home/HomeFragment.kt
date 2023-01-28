@@ -25,6 +25,7 @@ import com.example.guru16application.member.datashare
 import com.example.guru16application.ui.ProductDBHelper
 import com.example.guru16application.ui.home.api.Constants.Companion.TAG
 import com.example.guru16application.ui.home.api.WeatherViewModel
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import java.io.File
 import java.io.FileOutputStream
@@ -35,12 +36,10 @@ import java.io.InputStream
 
 class HomeFragment : Fragment() {
 
-    // ──────────────────────────────────────────────────────────── 프래그먼트 초기화
+    // ──────────────────────────────────────────────────────────── 변수 선언
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
-
 
     /*lateinit var todoadd : ImageButton
     lateinit var todoBtn  : Button
@@ -51,8 +50,6 @@ class HomeFragment : Fragment() {
     lateinit var dbManager : ProductDBHelper
     lateinit var sqlitedb : SQLiteDatabase
 
-
-
     var todoarr = arrayListOf<TodoViewItem>()
     var dataid : datashare = datashare
     var logid = dataid.getValue()
@@ -60,6 +57,7 @@ class HomeFragment : Fragment() {
 
     lateinit var db: SQLiteDatabase
 
+    // ──────────────────────────────────────────────────────────── 프래그먼트 초기화
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,30 +67,12 @@ class HomeFragment : Fragment() {
         val homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
-        // weather view
-        //val weatherViewModel by viewModels<WeatherViewModel>()
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val mContext: Context = requireContext()
 
-
-        /*val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }*/
-//         오류 코드
-//        weatherViewModel.getWeather("JSON", 3, 1, 20230126, 0800, "62", "128")
-//        weatherViewModel.weatherResponse.observe(viewLifecycleOwner){
-//            for(i in it.body()?.response!!.body.items.item){
-//                Log.d(TAG, "$i")
-//            }
-//        }
-
-
-
-      dbManager = ProductDBHelper(context, "food.db")
+        dbManager = ProductDBHelper(context, "food.db")
         sqlitedb = dbManager.readableDatabase
         sqlitedb = dbManager.writableDatabase
 
@@ -108,7 +88,6 @@ class HomeFragment : Fragment() {
                 todoarr.add(TodoViewItem(listtext))
             }
 
-
         val recycler : RecyclerView = binding.recy
         homeViewModel.text.observe(viewLifecycleOwner) {
             val todolist = todoarr
@@ -116,17 +95,12 @@ class HomeFragment : Fragment() {
             recycler.adapter = Adapter_1
         }
 
-
-
-
         binding.TodoBtn.setOnClickListener{
 
             binding.bottomPanel.panelState = SlidingUpPanelLayout.PanelState.HIDDEN
             Handler(Looper.getMainLooper()).postDelayed({
                 downKeyboard()
             }, 390)
-
-
 
             var todo_text : String = binding.TodoEdt.text.toString()
             var todoArr = arrayListOf<TodoViewItem>()
@@ -150,7 +124,6 @@ class HomeFragment : Fragment() {
                     var listtext1 = cursor1.getString((cursor1.getColumnIndexOrThrow("todo"))).toString()
 
                     todoArr.add(TodoViewItem(listtext1))
-
                 }
 
                 val recycler_s: RecyclerView = binding.recy
@@ -160,27 +133,19 @@ class HomeFragment : Fragment() {
                     Adapter_s.notifyDataSetChanged()
                     recycler_s.adapter = Adapter_s
                 }
-
                 sqlitedb.close()
 
                 binding.TodoEdt.text = null
-
-
             }else{
 
                 binding.TodoEdt.text = null
                 Toast.makeText(context, "이미 존재하는 일정입니다.", Toast.LENGTH_SHORT).show()
-
             }
-
-
-
         }
 
         binding.todoadd.setOnClickListener{
 
             binding.bottomPanel.panelState = SlidingUpPanelLayout.PanelState.EXPANDED
-
         }
 
         binding.todore.setOnClickListener{
@@ -201,7 +166,6 @@ class HomeFragment : Fragment() {
                 todore.add(TodoViewItem(listtext))
             }
 
-
             val recycler_r : RecyclerView = binding.recy
             homeViewModel.text.observe(viewLifecycleOwner) {
                 val todolist = todore
@@ -211,16 +175,6 @@ class HomeFragment : Fragment() {
             }
 
         }
-
-
-
-
-
-
-
-
-
-
         return root
     }
 
@@ -229,6 +183,10 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
+    // ──────────────────────────────────────────────────────────── 첫 번째 레이아웃 : 날씨 정보
+
+
+    // ──────────────────────────────────────────────────────────── 두 번째 레이아웃 : 할일 목록
     private fun downKeyboard() {
         if (activity != null && requireActivity().currentFocus != null) {
             val inputManager: InputMethodManager =
