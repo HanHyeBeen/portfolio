@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.guru16application.MainActivity
 import com.example.guru16application.ui.ProductDBHelper
 import com.example.guru16application.databinding.FragmentClothingBinding
-
+import com.example.guru16application.member.Mypage
 
 
 class ClothingFragment : Fragment() {
@@ -57,6 +57,13 @@ class ClothingFragment : Fragment() {
 
         _binding = FragmentClothingBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        // ───────────────────────────── 글쓰기버튼 리스너 ─────────────────────────────
+
+        val button : Button = binding.btnCreate
+        button.setOnClickListener {
+
+        }
 
         // 보일 아이템 검색
         dbManager = ProductDBHelper(mainActivity, "food.db")

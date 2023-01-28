@@ -1,6 +1,7 @@
 package com.example.guru16application
 
 import android.content.Context
+import android.content.Intent
 import android.content.res.AssetManager
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.guru16application.databinding.ActivityMainBinding
+import com.example.guru16application.member.Mypage
 import com.example.guru16application.ui.settings.SettingsFragment
 import com.example.guru16application.ui.ProductDBHelper
 import com.example.guru16application.ui.shelter.ShelterFragment
@@ -78,21 +80,15 @@ class MainActivity : AppCompatActivity() {
     // 툴바 클릭 이벤트 정의
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        when (item?.itemId) {
+        return when (item?.itemId) {
             R.id.action_settings -> {
-                val settingsFragment = SettingsFragment()
-                show() // *사용자 정의 함수 : 세팅페이지 이동
+                val intent = Intent(this, Mypage::class.java)
+                startActivity(intent)
                 return true
             }
-            else -> false
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
-    }
-    // *사용자 정의 함수 : show()
-    private fun show() {
-        val fragManager = supportFragmentManager.beginTransaction()
 
-        fragManager.replace(R.id.nav_host_fragment_activity_main, SettingsFragment()).commit()
     }
 
     // ─────────────────────────────────── 데이터베이스 ───────────────────────────────────
