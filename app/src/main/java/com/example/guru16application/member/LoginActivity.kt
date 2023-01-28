@@ -38,6 +38,8 @@ class LoginActivity : AppCompatActivity() {
 
     var filePath: String = "/data/data/com.example.guru16application/databases/"
 
+    lateinit var userid : datashare
+
     //val dialog = AlertDialog.Builder(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,16 +65,29 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
+        val test = intent.getStringExtra("del").toString()
+        if (test == "yes"){
+            clearUser2()
+            check("no")
+        }
+
 
 
         loadUser2()
+
+        val ckbox : String? = loadcheck()
+
+
+        if(ckbox == "yes"){
+            autoLogin.isChecked = true
+        }
 
 
         // ───────────────────────── 이벤트 정의 : 로그인 버튼 ─────────────────────────
 
         btn_login.setOnClickListener {
-            var intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            //var intent = Intent(this, MainActivity::class.java)
+            //startActivity(intent)
             var inputID = editID.text.toString()
             var inputPW = editPW.text.toString()
 
@@ -103,13 +118,20 @@ class LoginActivity : AppCompatActivity() {
                     {
                         if(autoLogin.isChecked()){
                             saveUser2(inputID, inputPW)
+                            check("yes")
+                        }else{
+                            clearUser2()
+                            check("no")
                         }
+
 
                         Toast.makeText(applicationContext, "$str_name 님 환영합니다", Toast.LENGTH_SHORT).show()
 
                         var intent = Intent(this, MainActivity::class.java)
-                        intent.putExtra("memberName", str_name)
-                        intent.putExtra("memberID", str_id)
+                        //intent.putExtra("memberName", str_name)
+                        //intent.putExtra("memberID", str_id)
+                        userid = datashare
+                        userid.setValue(inputID)
                         startActivity(intent)
                         finish()
                     }
@@ -175,16 +197,34 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    /*
-    로그아웃 구현 시
-    private fun clearUser2() {
+
+    //로그아웃 구현 시
+    fun clearUser2() {
         var pref = this.getSharedPreferences("autoLogin", Activity.MODE_PRIVATE)
         var editor = pref.edit()
 
         editor.clear()
         editor.commit()
     }
-    * */
+
+    fun check(chk : String) {
+        var pref = this.getSharedPreferences("autoLoginBtn", Activity.MODE_PRIVATE)
+        var editor = pref.edit()
+
+        editor.putString("check", chk).apply()
+        editor.commit()
+    }
+
+    private fun loadcheck() : String? {
+        var pref = this.getSharedPreferences("autoLoginBtn", Activity.MODE_PRIVATE)
+        var result = pref.getString("check", "")
+
+        return result
+
+
+    }
+
+
 
     private fun setDB(ctx: Context) {
 

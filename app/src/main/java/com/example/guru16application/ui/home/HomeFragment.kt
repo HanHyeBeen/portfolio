@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.guru16application.MainActivity
 import com.example.guru16application.R
 import com.example.guru16application.databinding.FragmentHomeBinding
+import com.example.guru16application.member.datashare
 import com.example.guru16application.ui.ProductDBHelper
 import com.example.guru16application.ui.home.api.Constants.Companion.TAG
 import com.example.guru16application.ui.home.api.WeatherViewModel
@@ -51,7 +52,10 @@ class HomeFragment : Fragment() {
     lateinit var sqlitedb : SQLiteDatabase
 
 
+
     var todoarr = arrayListOf<TodoViewItem>()
+    var dataid : datashare = datashare
+    var logid = dataid.getValue()
 
 
     lateinit var db: SQLiteDatabase
@@ -93,7 +97,7 @@ class HomeFragment : Fragment() {
         sqlitedb = dbManager.writableDatabase
 
         var cursor: Cursor
-            cursor = sqlitedb.rawQuery("SELECT * FROM todo;", null)
+            cursor = sqlitedb.rawQuery("SELECT * FROM todo WHERE touser = '"+logid+"';", null)
 
             Toast.makeText(context,"${cursor.count}", Toast.LENGTH_SHORT).show()
 
@@ -120,7 +124,7 @@ class HomeFragment : Fragment() {
             binding.bottomPanel.panelState = SlidingUpPanelLayout.PanelState.HIDDEN
             Handler(Looper.getMainLooper()).postDelayed({
                 downKeyboard()
-            }, 381)
+            }, 390)
 
 
 
@@ -132,14 +136,14 @@ class HomeFragment : Fragment() {
 
 
             var cursor: Cursor
-            cursor = sqlitedb.rawQuery("SELECT * FROM todo WHERE todo = '"+todo_text+"';", null)
+            cursor = sqlitedb.rawQuery("SELECT * FROM todo WHERE todo = '"+todo_text+"' AND touser = '"+logid+"';", null)
 
             if(cursor.count == 0) {
 
-                sqlitedb.execSQL("INSERT INTO todo VALUES ('" + todo_text + "', null);")
+                sqlitedb.execSQL("INSERT INTO todo VALUES ('" + todo_text + "', '" + logid +"');")
 
                 var cursor1: Cursor
-                cursor1 = sqlitedb.rawQuery("SELECT * FROM todo;", null)
+                cursor1 = sqlitedb.rawQuery("SELECT * FROM todo WHERE todo = '"+todo_text+"' AND touser = '"+logid+"';", null)
 
                 while (cursor1.moveToNext()) {
 
@@ -186,7 +190,7 @@ class HomeFragment : Fragment() {
             var todore = arrayListOf<TodoViewItem>()
 
             var cursor_r: Cursor
-            cursor_r = sqlitedb.rawQuery("SELECT * FROM todo;", null)
+            cursor_r = sqlitedb.rawQuery("SELECT * FROM todo WHERE touser = '"+logid+"';", null)
 
             Toast.makeText(context,"갱신되었습니다.", Toast.LENGTH_SHORT).show()
 

@@ -15,7 +15,16 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:menu="@menu/top_action_menu" />
+        app:menu="@menu/top_action_menu">
+
+        <TextView
+            android:id="@+id/uName"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="닉네임"
+            android:textSize="15dp"
+            android:layout_gravity="right"/>
+    </androidx.appcompat.widget.Toolbar>
 
 
     <fragment

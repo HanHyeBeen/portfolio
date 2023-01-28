@@ -3,11 +3,13 @@ package com.example.guru16application
 import android.content.Context
 import android.content.Intent
 import android.content.res.AssetManager
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
@@ -16,7 +18,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.guru16application.databinding.ActivityMainBinding
+import com.example.guru16application.member.DBManager
 import com.example.guru16application.member.Mypage
+import com.example.guru16application.member.datashare
 import com.example.guru16application.ui.ProductDBHelper
 import com.example.guru16application.ui.shelter.ShelterFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -30,7 +34,8 @@ class MainActivity : AppCompatActivity() {
     // 내비게이션 프래그먼트
     private lateinit var binding: ActivityMainBinding
 
-    // 데이터베이스
+
+        // 데이터베이스
     lateinit var db: SQLiteDatabase
     var filePath: String = "/data/data/com.example.guru16application/databases/"
 
@@ -41,10 +46,13 @@ class MainActivity : AppCompatActivity() {
         val memberName = intent.getStringExtra("memberName")
         val memberID = intent.getStringExtra("memberID")
 
+
+
         // 내비게이션 프래그먼트와 툴바
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
+
 
         // 데이터베이스
        /* var check: File = File(filePath + "food.db")
@@ -70,6 +78,30 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        //~~님 구현
+
+        userchange()
+
+
+
+    }
+    fun userchange() {
+
+        val dbManager = DBManager(this, "memberDB", null, 1)
+        val sql : SQLiteDatabase = dbManager.readableDatabase
+        val share : datashare = datashare
+        var id = share.getValue()
+
+        var cursor:Cursor
+        cursor = sql.rawQuery("SELECT * FROM memberTBL WHERE id = '$id';", null)
+
+        while (cursor.moveToNext()){
+            var name = cursor.getString((cursor.getColumnIndexOrThrow("name"))).toString()
+            var set = name + " 님"
+            binding.uName.text = set
+        }
+
     }
 
     // ─────────────────────────────────── 툴바 함수 ───────────────────────────────────
