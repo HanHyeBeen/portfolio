@@ -104,6 +104,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        userchange()
+    }
+
     // ─────────────────────────────────── 툴바 함수 ───────────────────────────────────
     // 툴바 초기화
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

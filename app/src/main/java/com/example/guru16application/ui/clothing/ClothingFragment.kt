@@ -247,6 +247,66 @@ class ClothingFragment : Fragment() {
         _binding = null
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        dbManager = ProductDBHelper(context, "food.db")
+
+        sqlitedb = dbManager.readableDatabase
+        sqlitedb = dbManager.writableDatabase
+
+        Relist.clear()
+        Grlist.clear()
+
+        var cursor_r: Cursor
+        cursor_r = sqlitedb.rawQuery("SELECT * FROM cloth WHERE cType = 1;", null)
+
+        var cursor_g: Cursor
+        cursor_g = sqlitedb.rawQuery("SELECT cMainimg, cName FROM cloth WHERE cType = 2;", null)
+
+
+
+        while (cursor_r.moveToNext()) {
+            Image = cursor_r.getBlob(cursor_r.getColumnIndexOrThrow("cMainimg"))
+            val bitmap: Bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.size)
+            var Name = cursor_r.getString((cursor_r.getColumnIndexOrThrow("cName"))).toString()
+
+            Relist.add(ReViewItem(bitmap, Name))
+
+
+        }
+
+        while (cursor_g.moveToNext()) {
+            Image = cursor_g.getBlob(cursor_g.getColumnIndexOrThrow("cMainimg"))
+            val bitmap: Bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.size)
+            var Name = cursor_g.getString((cursor_g.getColumnIndexOrThrow("cName"))).toString()
+
+            Grlist.add(ReViewItem(bitmap, Name))
+
+        }
+
+        val recyler: RecyclerView = binding.recyclerHorizon
+        val gridcloth: GridView = binding.clothGrid
+
+            val relist: ArrayList<ReViewItem> = Relist
+            val Adapter_2 = ReViewAdapter(requireContext(), relist)
+            recyler.adapter = Adapter_2
+
+
+            val glist: ArrayList<ReViewItem> = Grlist
+            val Adapter_3 = GriViewAdapter(requireContext(), glist)
+            gridcloth.adapter = Adapter_3
+
+
+        sqlitedb.close()
+
+        var expandSpec =
+            View.MeasureSpec.makeMeasureSpec(Int.MAX_VALUE shr 2, View.MeasureSpec.AT_MOST)
+        binding.clothGrid.measure(0, expandSpec)
+        binding.clothGrid.getLayoutParams().height = check("SELECT * FROM cloth WHERE cType = 2;")
+
+    }
+
 
 
     private fun downKeyboard() {
@@ -291,9 +351,8 @@ class ClothingFragment : Fragment() {
 
         sqlitedb.close()
 
-        var expandSpec =
-            View.MeasureSpec.makeMeasureSpec(Int.MAX_VALUE shr 2, View.MeasureSpec.AT_MOST)
-        binding.clothGrid.measure(0, expandSpec);
+        var expandSpec = View.MeasureSpec.makeMeasureSpec(Int.MAX_VALUE shr 2, View.MeasureSpec.AT_MOST)
+        binding.clothGrid.measure(0, expandSpec)
         var check: Int = binding.clothGrid.getMeasuredHeight()
         return check
 
