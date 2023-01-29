@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<font-family xmlns:android="http://schemas.android.com/apk/res/android">
-    <font android:fontStyle="normal"
-        android:font="@font/nanumsquareroundr"></font>
+<font-family
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<!--Font resource File은 API 26 이상부터 지원하므로 그보다 낮은 버전에서도 적용하기 위해 app namespace를 사용-->
 
-    <font android:fontStyle="normal"
-    android:font="@font/nanumsquareroundb"></font>
+    <!--regular-->
+    <font
+        android:font="@font/nanumsquareroundr"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/nanumsquareroundr"
+        app:fontStyle="normal"
+        app:fontWeight="500"/>
 
-    <font android:fontStyle="normal"
-        android:font="@font/nanumsquareroundeb"></font>
+    <!--bold-->
+    <font
+        android:font="@font/nanumsquareroundb"
+        android:fontStyle="normal"
+        android:fontWeight="700"
+        app:font="@font/nanumsquareroundb"
+        app:fontStyle="normal"
+        app:fontWeight="1000"/>
 
+    <!--extra bole-->
+    <font
+        android:font="@font/nanumsquareroundeb"
+        android:fontStyle="normal"
+        android:fontWeight="700"
+        app:font="@font/nanumsquareroundeb"
+        app:fontStyle="normal"
+        app:fontWeight="1000"/>
 </font-family>
