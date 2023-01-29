@@ -95,7 +95,7 @@ class Mypage : AppCompatActivity() {
             var changeName = username.text.toString()
             var changePhone = usertel.text.toString()
 
-            Toast.makeText(this, "$changeName , $changePhone ", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "변경되었습니다!", Toast.LENGTH_SHORT).show()
 
 
 
@@ -111,8 +111,8 @@ class Mypage : AppCompatActivity() {
                 username.setText(changeName)
                 usertel.setText(changePhone)
 
-                finishAffinity()
-                startActivity(Intent(this,MainActivity::class.java))
+                /*finishAffinity()
+                startActivity(Intent(this,MainActivity::class.java))*/
             }
 
 
