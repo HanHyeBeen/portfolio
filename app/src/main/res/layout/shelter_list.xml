@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="건물"
         android:fontFamily="@font/nanumsquareroundb"
-        android:textSize="16dp"
+        android:textSize="18dp"
         android:textStyle="bold"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
@@ -24,6 +24,6 @@
         android:layout_marginTop="20dp"
         android:text="강의실"
         android:fontFamily="@font/nanumsquareroundr"
-        android:textSize="16dp" />
+        android:textSize="15dp" />
 
 </LinearLayout>

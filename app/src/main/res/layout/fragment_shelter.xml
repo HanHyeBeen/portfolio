@@ -7,42 +7,48 @@
     tools:context=".ui.shelter.ShelterFragment">
 
 
-
-    <EditText
-        android:id="@+id/shelterSearchEdt"
-        android:layout_width="300dp"
+    <LinearLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:hint="검색어를 입력하세요"
-        android:fontFamily="@font/nanumsquareroundr"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="15dp"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/shelterSearchBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="5dp"
-        android:text="확인"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:fontFamily="@font/nanumsquareroundb"
-        app:layout_constraintStart_toEndOf="@+id/shelterSearchEdt"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/shelterSearchEdt"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/nanumsquareroundr"
+            android:hint="검색어를 입력하세요"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/shelterSearchBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/shelterSearchBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumsquareroundb"
+            android:text="검색"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/shelterSearchEdt"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="캠퍼스 내 쉼터"
+        android:layout_margin="15dp"
         android:fontFamily="@font/nanumsquareroundeb"
+        android:text="캠퍼스 내 쉼터"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shelterSearchEdt" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <LinearLayout
         android:layout_width="match_parent"

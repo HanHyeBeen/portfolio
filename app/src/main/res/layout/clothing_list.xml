@@ -13,6 +13,7 @@
         android:layout_height="150dp"
         android:id="@+id/cardview"
         app:cardCornerRadius="15dp">
+
         <ImageView
             android:id="@+id/imgView_item"
             android:layout_width="150dp"
@@ -28,7 +29,9 @@
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:text="월계수학잠"
+        android:fontFamily="@font/nanumsquareroundr"
         android:textSize="15sp"
+        android:textAlignment="center"
         android:autoSizeMaxTextSize="18sp"
         android:autoSizeMinTextSize="12sp"
         android:autoSizeTextType="uniform"

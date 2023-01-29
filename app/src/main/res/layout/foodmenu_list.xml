@@ -7,9 +7,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginVertical="5dp"
         android:orientation="horizontal">
 
         <TextView
@@ -17,7 +17,9 @@
             android:layout_width="300dp"
             android:layout_height="30dp"
             android:text="메뉴"
-            android:textSize="24dp" />
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/nanumsquareroundb"
+            android:textSize="15dp" />
 
         <View
             android:layout_width="0dp"
@@ -29,7 +31,8 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:text="가격"
-            android:textSize="24dp" />
+            android:fontFamily="@font/nanumsquareroundb"
+            android:textSize="15dp" />
     </LinearLayout>
 
 </LinearLayout>

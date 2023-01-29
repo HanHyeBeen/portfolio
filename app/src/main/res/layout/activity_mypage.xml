@@ -26,7 +26,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="25dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -46,6 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="email@swu.ac.kr"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:textSize="20sp" />
 
             <LinearLayout
@@ -58,14 +59,16 @@
                     android:id="@+id/btn_logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="로그아웃" />
+                    android:text="로그아웃"
+                    android:fontFamily="@font/nanumsquareroundb" />
 
                 <Button
                     android:id="@+id/btn_delete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="회원탈퇴" />
+                    android:text="회원탈퇴"
+                    android:fontFamily="@font/nanumsquareroundb" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -73,7 +76,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="25dp"
         android:orientation="vertical">
         
         <LinearLayout
@@ -85,7 +88,8 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:textSize="18dp"
-            android:text="회원 정보" />
+            android:text="회원 정보"
+            android:fontFamily="@font/nanumsquareroundr" />
 
             <View
                 android:layout_width="0dp"
@@ -96,6 +100,7 @@
                 android:layout_width="100dp"
                 android:layout_height="45dp"
                 android:text="변경하기"
+                android:fontFamily="@font/nanumsquareroundb"
                 android:textSize="15dp" />
 
 
@@ -112,6 +117,7 @@
                 android:layout_height="30dp"
                 android:textSize="19dp"
                 android:text="닉네임 : "
+                android:fontFamily="@font/nanumsquareroundr"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -121,6 +127,7 @@
                 android:layout_width="150dp"
                 android:layout_height="45dp"
                 android:text="닉네임"
+                android:fontFamily="@font/nanumsquareroundb"
                 android:textSize="19dp"
                 android:layout_marginStart="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -140,6 +147,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:text="전화번호 : "
+                android:fontFamily="@font/nanumsquareroundr"
                 android:textSize="19dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -150,6 +158,7 @@
                 android:layout_width="150dp"
                 android:layout_height="45dp"
                 android:text="전화번호"
+                android:fontFamily="@font/nanumsquareroundb"
                 android:textSize="19dp"
                 android:layout_marginStart="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
