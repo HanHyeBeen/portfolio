@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:fontFamily="@font/nanumsquareroundr"
     tools:context=".member.LoginActivity">
 
     <!--로고-->
@@ -25,7 +24,8 @@
         android:ems="12"
         android:hint="아이디"
         android:inputType="textEmailAddress"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:fontFamily="@font/nanumsquareroundr" />
 
     <EditText
         android:id="@+id/editPW"
@@ -35,7 +35,8 @@
         android:ems="12"
         android:hint="비밀번호"
         android:inputType="textPassword"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:fontFamily="@font/nanumsquareroundr"/>
 
     <CheckBox
         android:id="@+id/autoLogin"
@@ -43,7 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:ems="15"
-        android:text="자동 로그인" />
+        android:text="자동 로그인"
+        android:fontFamily="@font/nanumsquareroundr"/>
 
     <Button
         android:id="@+id/btn_login"
@@ -52,7 +54,8 @@
         android:layout_gravity="center"
         android:paddingHorizontal="100dp"
         android:paddingVertical="10dp"
-        android:text="로그인" />
+        android:text="로그인"
+        android:fontFamily="@font/nanumsquareroundb"/>
 
     <Button
         android:id="@+id/btn_register"
@@ -62,6 +65,7 @@
         android:layout_marginTop="5dp"
         android:paddingHorizontal="93dp"
         android:paddingVertical="10dp"
-        android:text="가입하기" />
+        android:text="가입하기"
+        android:fontFamily="@font/nanumsquareroundb" />
 
 </LinearLayout>
