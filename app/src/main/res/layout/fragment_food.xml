@@ -67,7 +67,6 @@
                     android:layout_marginTop="5dp"
                     android:text="검색"
                     android:fontFamily="@font/nanumsquareroundb"
-                    android:text="검색"
                     app:layout_constraintLeft_toRightOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/foodSearchEdt"
                     app:layout_constraintTop_toTopOf="parent" />
