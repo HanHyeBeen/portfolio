@@ -54,6 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:hint="검색어를 입력하세요"
+                    android:fontFamily="@font/nanumsquareroundr"
                     app:layout_constraintEnd_toStartOf="@+id/foodSearchBtn"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,6 +66,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="5dp"
                     android:text="Button"
+                    android:fontFamily="@font/nanumsquareroundb"
                     app:layout_constraintLeft_toRightOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/foodSearchEdt"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -97,6 +99,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="16sp"
                     android:text="List"
+                    android:fontFamily="@font/nanumsquareroundr"
                     android:textSize="24sp" />
 
             </LinearLayout>
@@ -115,6 +118,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/noSearch"
                 android:text="검색 결과가 없습니다. \n모든 위치를 표시합니다."
+                android:fontFamily="@font/nanumsquareroundr"
                 android:textSize="18dp"
                 android:gravity="center"
                 android:visibility="gone" />

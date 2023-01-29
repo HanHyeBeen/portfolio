@@ -20,7 +20,8 @@
             android:text="할일"
             android:autoSizeTextType="uniform"
             android:autoSizeMinTextSize="18dp"
-            android:autoSizeMaxTextSize="26dp" />
+            android:autoSizeMaxTextSize="26dp"
+            android:fontFamily="@font/nanumsquareroundr" />
 
         <View
             android:layout_width="0dp"

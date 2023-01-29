@@ -54,7 +54,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="오늘 옷차림" />
+                    android:text="오늘 옷차림"
+                    android:fontFamily="@font/nanumsquareroundeb" />
 
             </LinearLayout>
 
@@ -90,7 +91,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:text="TODOlist"
-                        android:textSize="32dp" />
+                        android:textSize="32dp"
+                        android:fontFamily="@font/nanumsquareroundeb"/>
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -156,7 +158,8 @@
                     android:layout_width="300dp"
                     android:layout_height="50dp"
                     android:hint="오늘의 할 일을 입력하세요!"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:fontFamily="@font/nanumsquareroundr" />
 
 
             </LinearLayout>

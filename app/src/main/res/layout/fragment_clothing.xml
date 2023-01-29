@@ -22,13 +22,15 @@
                 android:id="@+id/clothSearchEdt"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:hint="검색어를 입력하세요" />
+                android:hint="검색어를 입력하세요"
+                android:fontFamily="@font/nanumsquareroundr" />
 
             <Button
                 android:id="@+id/clothSearchBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="확인" />
+                android:text="확인"
+                android:fontFamily="@font/nanumsquareroundb" />
 
         </LinearLayout>
 
@@ -59,7 +61,7 @@
                         android:layout_weight="100"
                         android:text="학잠"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/nanumsquareroundeb" />
 
                     <Button
                         android:id="@+id/btn_create"
