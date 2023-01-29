@@ -16,6 +16,7 @@ import android.widget.AdapterView.OnItemClickListener
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guru16application.MainActivity
@@ -38,18 +39,18 @@ class ClothingFragment : Fragment() {
     var Grlist = ArrayList<ReViewItem>()
 
 
-    lateinit var mainActivity: MainActivity
+    //lateinit var mainActivity: MainActivity
 
     lateinit var dbManager: ProductDBHelper
     lateinit var sqlitedb: SQLiteDatabase
 
 
-    override fun onAttach(context: Context) {
+    /*override fun onAttach(context: Context) {
         super.onAttach(context)
 
 
         mainActivity = context as MainActivity
-    }
+    }*/
 
 
     override fun onCreateView(
@@ -79,7 +80,7 @@ class ClothingFragment : Fragment() {
         }
 
         // 보일 아이템 검색
-        dbManager = ProductDBHelper(mainActivity, "food.db")
+        dbManager = ProductDBHelper(context, "food.db")
 
         sqlitedb = dbManager.readableDatabase
         sqlitedb = dbManager.writableDatabase
@@ -119,14 +120,14 @@ class ClothingFragment : Fragment() {
         clothingViewModel.clothlist.observe(viewLifecycleOwner) {
 
             val relist: ArrayList<ReViewItem> = Relist
-            val Adapter_2 = ReViewAdapter(mainActivity, relist)
+            val Adapter_2 = ReViewAdapter(requireContext(), relist)
             recyler.adapter = Adapter_2
         }
 
         clothingViewModel.clothlist.observe(viewLifecycleOwner) {
 
             val glist: ArrayList<ReViewItem> = Grlist
-            val Adapter_3 = GriViewAdapter(mainActivity, glist)
+            val Adapter_3 = GriViewAdapter(requireContext(), glist)
             gridcloth.adapter = Adapter_3
         }
 
@@ -175,7 +176,7 @@ class ClothingFragment : Fragment() {
                 clothingViewModel.clothlist.observe(viewLifecycleOwner) {
 
                     val relist_c: ArrayList<ReViewItem> = Relist
-                    val Adapter_2 = ReViewAdapter(mainActivity, relist_c)
+                    val Adapter_2 = ReViewAdapter(requireContext(), relist_c)
                     recyler2.adapter = Adapter_2
                 }
             } else {
@@ -202,7 +203,7 @@ class ClothingFragment : Fragment() {
                     clothingViewModel.clothlist.observe(viewLifecycleOwner) {
 
                         val glist_c: ArrayList<ReViewItem> = Grlist
-                        val Adapter_3 = GriViewAdapter(mainActivity, glist_c)
+                        val Adapter_3 = GriViewAdapter(requireContext(), glist_c)
                         gridcloth2.adapter = Adapter_3
                     }
 
@@ -246,6 +247,8 @@ class ClothingFragment : Fragment() {
         _binding = null
     }
 
+
+
     private fun downKeyboard() {
         if (activity != null && requireActivity().currentFocus != null) {
             val inputManager: InputMethodManager =
@@ -261,7 +264,7 @@ class ClothingFragment : Fragment() {
 
         Grlist.clear()
 
-        dbManager = ProductDBHelper(mainActivity, "food.db")
+        dbManager = ProductDBHelper(context, "food.db")
 
         sqlitedb = dbManager.readableDatabase
         sqlitedb = dbManager.writableDatabase
@@ -283,7 +286,7 @@ class ClothingFragment : Fragment() {
 
         val gridcloth: GridView = binding.clothGrid
         val glist: ArrayList<ReViewItem> = Grlist
-        val Adapter_3 = GriViewAdapter(mainActivity, glist)
+        val Adapter_3 = GriViewAdapter(requireContext(), glist)
         gridcloth.adapter = Adapter_3
 
         sqlitedb.close()

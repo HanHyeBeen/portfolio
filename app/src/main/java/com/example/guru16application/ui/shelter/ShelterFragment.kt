@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.GridView
 import android.widget.ListView
@@ -69,13 +70,13 @@ class ShelterFragment : Fragment() {
         sqlitedb = dbManager.writableDatabase
 
         var cursor: Cursor
-        cursor = sqlitedb.rawQuery("SELECT * FROM cloth ;", null)
+        cursor = sqlitedb.rawQuery("SELECT * FROM shelter ;", null)
 
         while(cursor.moveToNext()){
-            var building = cursor.getString((cursor.getColumnIndexOrThrow("cName"))).toString()
-            //var classroom = cursor.getString((cursor.getColumnIndexOrThrow("fLoc"))).toString()
-            //list.add(ListViewItem_s(building,classroom)
-                    list.add(ListViewItem_s(building,building))
+            var building = cursor.getString((cursor.getColumnIndexOrThrow("shelname"))).toString()
+            var classroom = cursor.getString((cursor.getColumnIndexOrThrow("shelloc"))).toString()
+            list.add(ListViewItem_s(building,classroom))
+
         }
 
         val listView1: ListView = binding.listView
@@ -93,6 +94,7 @@ class ShelterFragment : Fragment() {
         binding.shelterSearchBtn.setOnClickListener {
 
             list.clear()
+            downKeyboard()
             //Toast.makeText(mainActivity,"됨", Toast.LENGTH_SHORT).show()
 
             var str_text: String = binding.shelterSearchEdt.text.toString()
@@ -103,20 +105,19 @@ class ShelterFragment : Fragment() {
             if (str_text != "") {
                 cursor =
                     sqlitedb.rawQuery(
-                        "SELECT * FROM cloth WHERE cName LIKE '%" + str_text + "%'",
+                        "SELECT * FROM shelter WHERE shelname LIKE '%" + str_text + "%' OR shelloc LIKE '%" + str_text + "%'",
                         null
                     )
             } else {
-                cursor = sqlitedb.rawQuery("SELECT * FROM cloth;", null)
+                cursor = sqlitedb.rawQuery("SELECT * FROM shelter;", null)
             }
 
 
             while (cursor.moveToNext()) {
-                var building =
-                    cursor.getString((cursor.getColumnIndexOrThrow("cName"))).toString()
-               // var classroom = cursor.getString((cursor.getColumnIndexOrThrow("fLoc"))).toString()
-                //list.add(ListViewItem_s(building, classroom))
-                list.add(ListViewItem_s(building,building))
+                var building = cursor.getString((cursor.getColumnIndexOrThrow("shelname"))).toString()
+                var classroom = cursor.getString((cursor.getColumnIndexOrThrow("shelloc"))).toString()
+                list.add(ListViewItem_s(building,classroom))
+
             }
 
             val listView2: ListView = binding.listView
@@ -143,41 +144,14 @@ class ShelterFragment : Fragment() {
         _binding = null
     }
 
-    private fun check(string: String): Int {
-
-        list.clear()
-
-        dbManager = ProductDBHelper(mainActivity, "food.db")
-
-        sqlitedb = dbManager.readableDatabase
-        sqlitedb = dbManager.writableDatabase
-
-        var cursor: Cursor
-        cursor = sqlitedb.rawQuery(string, null)
-
-
-
-        while (cursor.moveToNext()) {
-            var building = cursor.getString((cursor.getColumnIndexOrThrow("cName"))).toString()
-
-            list.add(ListViewItem_s(building,building))
-
+    private fun downKeyboard() {
+        if (activity != null && requireActivity().currentFocus != null) {
+            val inputManager: InputMethodManager =
+                requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputManager.hideSoftInputFromWindow(
+                requireActivity().currentFocus!!.windowToken,
+                InputMethodManager.HIDE_NOT_ALWAYS
+            )
         }
-
-
-        val shelterlistv: ListView = binding.listView
-        val slist: ArrayList<ListViewItem_s> = list
-        val Adapter_s = ListViewAdapter_s(mainActivity, slist)
-        shelterlistv.adapter = Adapter_s
-
-        sqlitedb.close()
-
-        var expandSpec =
-            View.MeasureSpec.makeMeasureSpec(Int.MAX_VALUE shr 2, View.MeasureSpec.AT_MOST)
-        binding.listView.measure(0, expandSpec);
-        var check: Int = binding.listView.getMeasuredHeight()
-        return check
-
-
     }
 }

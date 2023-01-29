@@ -8,17 +8,20 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteStatement
 import android.graphics.Bitmap
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.MotionEvent
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.example.guru16application.R
 import com.example.guru16application.member.datashare
 import com.example.guru16application.ui.ProductDBHelper
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.util.*
+
 
 class ClothAddActivity : AppCompatActivity() {
 
@@ -201,11 +204,23 @@ class ClothAddActivity : AppCompatActivity() {
                     downKeyboard()
                     finish()
 
+
                 }
             }
 
-
         }
+
+        more_c.setOnTouchListener { view, event ->
+            if (view.id == R.id.more_c) {
+                view.parent.requestDisallowInterceptTouchEvent(true)
+                when (event.action and MotionEvent.ACTION_MASK) {
+                    MotionEvent.ACTION_UP -> view.parent.requestDisallowInterceptTouchEvent(false)
+                }
+            }
+            false
+        }
+
+
 
 
 

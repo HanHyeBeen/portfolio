@@ -79,7 +79,7 @@ class HomeFragment : Fragment() {
         var cursor: Cursor
             cursor = sqlitedb.rawQuery("SELECT * FROM todo WHERE touser = '"+logid+"';", null)
 
-            Toast.makeText(context,"${cursor.count}", Toast.LENGTH_SHORT).show()
+
 
             while (cursor.moveToNext()) {
 

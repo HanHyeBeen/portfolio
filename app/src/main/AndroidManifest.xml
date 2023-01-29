@@ -18,6 +18,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.food.FoodNextActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.clothing.Editor.ClothAddActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustPan">
@@ -67,6 +74,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="3be8de2a9106c8781fdc73e678035c83" />
     </application>
 
 </manifest>

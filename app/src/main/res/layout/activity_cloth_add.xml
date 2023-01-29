@@ -313,8 +313,11 @@
 
             <EditText
                 android:id="@+id/more_c"
+                android:scrollbars="vertical"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="180dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/cust_edit"
                 android:hint="  상세 설명을 입력하세요."

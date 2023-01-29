@@ -34,7 +34,7 @@
         app:umanoPanelHeight="40dp"
         app:umanoOverlay="false"
         app:umanoFadeColor="#00000000"
-        app:umanoParallaxOffset="20dp"
+        app:umanoParallaxOffset="0dp"
         app:umanoShadowHeight="10dp">
 
 
@@ -71,13 +71,18 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/foodmap" />
+
         </LinearLayout>
 
 
         <LinearLayout
             android:id="@+id/dragView"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="false"
             android:orientation="vertical">
@@ -102,6 +107,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="16sp" />
+
+            <TextView
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/noSearch"
+                android:text="검색 결과가 없습니다. \n모든 위치를 표시합니다."
+                android:textSize="18dp"
+                android:gravity="center"
+                android:visibility="gone" />
+
 
 
         </LinearLayout>

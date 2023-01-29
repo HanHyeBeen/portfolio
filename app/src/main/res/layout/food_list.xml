@@ -9,7 +9,7 @@
         <ImageView
                 android:id="@+id/foodImage"
                 android:layout_width="150dp"
-                android:layout_height="100dp"
+                android:layout_height="120dp"
             android:layout_marginLeft="5dp"
                 android:src="@drawable/img"/>
 
@@ -34,6 +34,7 @@
                     android:id="@+id/foodLoc"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
+                    android:layout_marginBottom="5dp"
                     android:text="위치"
                     android:autoSizeMaxTextSize="15sp"
                     android:autoSizeMinTextSize="12sp"
@@ -43,7 +44,7 @@
                 <TextView
                     android:id="@+id/foodTime"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="40dp"
                     android:text="꼬숩미라떼"
                     android:autoSizeMaxTextSize="15sp"
                     android:autoSizeMinTextSize="12sp"

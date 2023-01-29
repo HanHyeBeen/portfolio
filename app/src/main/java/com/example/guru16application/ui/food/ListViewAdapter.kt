@@ -25,13 +25,15 @@ class ListViewAdapter(val context: Context, val list: ArrayList<ListViewItem>): 
 
         var fImage :ImageView = view!!.findViewById(R.id.foodImage)
         var fName : TextView = view.findViewById(R.id.foodName)
-        var fMenu : TextView = view.findViewById(R.id.foodLoc)
+        var fLoc : TextView = view.findViewById(R.id.foodLoc)
+        var fTime : TextView = view.findViewById(R.id.foodTime)
 
         val items = list[position]
 
         fImage.setImageBitmap(items.image)
         fName.text = items.name
-        fMenu.text = items.menu
+        fLoc.text = items.loc
+        fTime.text = items.time
 
         return view
 
