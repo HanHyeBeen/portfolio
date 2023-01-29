@@ -149,7 +149,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="30dp"
                     android:text="등록"
-                    android:id="@+id/TodoBtn" />
+                    android:id="@+id/TodoBtn"
+                    android:fontFamily="@font/nanumsquareroundb" />
 
 
                 <EditText
