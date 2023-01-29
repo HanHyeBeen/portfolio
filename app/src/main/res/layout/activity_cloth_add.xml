@@ -64,7 +64,7 @@
                     android:hint="제목을 입력하세요.(공백 포함 18자 이내)"
                     android:fontFamily="@font/nanumsquareroundr"
                     android:maxLength="18"
-                    android:textSize="18dp" />
+                    android:textSize="15dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -95,7 +95,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="학잠"
-                        android:textSize="18dp"
+                        android:textSize="15dp"
                         android:fontFamily="@font/nanumsquareroundr" />
 
                     <View
@@ -107,7 +107,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="과잠"
-                        android:textSize="18dp"
+                        android:textSize="15dp"
                         android:fontFamily="@font/nanumsquareroundr" />
 
                 </RadioGroup>
@@ -134,29 +134,53 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
                     android:layout_marginTop="10dp"
+                    android:text="YYYY"
+                    android:fontFamily="@font/nanumsquareroundr"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="년"
                     android:fontFamily="@font/nanumsquareroundr"
-                    android:textSize="18dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/startM"
-                    android:layout_width="40dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="MM"
+                    android:fontFamily="@font/nanumsquareroundr"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="월"
                     android:fontFamily="@font/nanumsquareroundr"
-                    android:textSize="18dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/startD"
-                    android:layout_width="40dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="DD"
+                    android:fontFamily="@font/nanumsquareroundr"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="일"
                     android:fontFamily="@font/nanumsquareroundr"
-                    android:textSize="18dp" />
+                    android:textSize="15dp" />
 
                 <View
                     android:layout_width="0dp"
@@ -196,29 +220,53 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
                     android:layout_marginTop="10dp"
+                    android:text="YYYY"
+                    android:fontFamily="@font/nanumsquareroundr"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="년"
                     android:fontFamily="@font/nanumsquareroundr"
-                    android:textSize="18dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/finM"
-                    android:layout_width="40dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="MM"
+                    android:fontFamily="@font/nanumsquareroundr"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="월"
                     android:fontFamily="@font/nanumsquareroundr"
-                    android:textSize="18dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/finD"
-                    android:layout_width="40dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="DD"
+                    android:fontFamily="@font/nanumsquareroundr"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="일"
                     android:fontFamily="@font/nanumsquareroundr"
-                    android:textSize="18dp" />
+                    android:textSize="15dp" />
 
                 <View
                     android:layout_width="0dp"

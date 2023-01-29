@@ -12,8 +12,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-
-
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,6 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:text="이름"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:autoSizeMaxTextSize="28sp"
                 android:autoSizeMinTextSize="20sp"
                 android:autoSizeTextType="uniform"
@@ -64,7 +63,8 @@
                 android:autoSizeMinTextSize="15sp"
                 android:autoSizeTextType="uniform"
                 android:gravity="center"
-                android:text="위치" />
+                android:text="위치"
+                android:fontFamily="@font/nanumsquareroundr" />
 
             <TextView
                 android:layout_marginTop="10dp"
@@ -72,6 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="운영시간"
+                android:fontFamily="@font/nanumsquareroundr"
                 android:autoSizeMaxTextSize="18sp"
                 android:autoSizeMinTextSize="15sp"
                 android:autoSizeTextType="uniform"
@@ -88,20 +89,22 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="메뉴판 보기"
+                    android:fontFamily="@font/nanumsquareroundb"
                     android:textSize="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/food_more"
-                    android:src="@drawable/ic_baseline_arrow_drop_down_24"
-                    android:background="?attr/selectableItemBackgroundBorderless"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="120dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_baseline_arrow_drop_down_24"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
@@ -127,8 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:orientation="vertical"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
+                android:paddingHorizontal="15dp">
 
                 <TextView
                     android:layout_width="330dp"
@@ -136,6 +138,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="10dp"
                     android:text="Comment"
+                    android:fontFamily="@font/nanumsquareroundb"
                     android:textSize="20dp" />
 
                 <LinearLayout
@@ -151,6 +154,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:hint="댓글을 작성하세요."
+                        android:fontFamily="@font/nanumsquareroundr"
                         android:textSize="13dp" />
 
                     <View
@@ -178,7 +182,7 @@
                 android:id="@+id/foodComment"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_margin="15dp" />
+                android:layout_margin="20dp" />
 
 
 

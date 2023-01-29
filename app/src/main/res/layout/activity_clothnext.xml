@@ -89,6 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="이름"
+            android:fontFamily="@font/nanumsquareroundeb"
             android:autoSizeMaxTextSize="28sp"
             android:autoSizeMinTextSize="20sp"
             android:autoSizeTextType="uniform"
@@ -100,6 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
             android:text="기간"
+            android:fontFamily="@font/nanumsquareroundb"
             android:textSize="23sp"
             android:gravity="center"/>
 
@@ -114,6 +116,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="상세보기"
+                android:fontFamily="@font/nanumsquareroundr"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -145,7 +148,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:textSize="20dp"
-                android:text="설명dddd\n\n\n\n\d\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\n"/>
+                android:text="설명dddd\n\n\n\n\d\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\n"
+                android:fontFamily="@font/nanumsquareroundr"/>
 
         </LinearLayout>
 
@@ -162,7 +166,8 @@
                 android:id="@+id/Url_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="버튼" />
+                android:text="버튼"
+                android:fontFamily="@font/nanumsquareroundb" />
         </LinearLayout>
 
 
