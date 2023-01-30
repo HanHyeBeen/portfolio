@@ -21,14 +21,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        android:paddingHorizontal="10dp">
 
         <TextView
             android:id="@+id/tvDate"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:text="mm월 dd일"
+            android:fontFamily="@font/nanumsquareroundeb"
             android:textSize="30dp" />
 
         <TextView
@@ -36,6 +36,7 @@
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:text="Error!!"
+            android:fontFamily="@font/nanumsquareroundr"
             android:textSize="30dp"
             android:visibility="gone"/>
 
@@ -43,7 +44,7 @@
             android:id="@+id/weatherRecyclerView"
             android:layout_width="200dp"
             android:layout_height="150dp"
-            android:paddingTop="5dp"
+            android:layout_marginTop="15dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </LinearLayout>
@@ -95,7 +96,8 @@
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:text="오늘 옷차림"
-                    android:fontFamily="@font/nanumsquareroundeb" />
+                    android:textSize="18dp"
+                    android:fontFamily="@font/nanumsquareroundb" />
 
             </LinearLayout>
 
@@ -109,8 +111,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:paddingHorizontal="10dp"
         android:layout_marginTop="20dp">
 
 
