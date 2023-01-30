@@ -11,11 +11,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="15dp">
+        android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -35,8 +34,10 @@
                 android:id="@+id/clothSearchBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="검색"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/nanumsquareroundb"
+                android:text="검색"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/clothSearchEdt"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -46,13 +47,14 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scrollbars="none"
             android:fillViewport="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
-                android:layout_marginHorizontal="5dp"
+                android:layout_marginHorizontal="3dp"
                 android:orientation="vertical">
 
                 <androidx.constraintlayout.widget.ConstraintLayout

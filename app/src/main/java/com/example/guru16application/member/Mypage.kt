@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.guru16application.MainActivity
 import com.example.guru16application.R
+import com.example.guru16application.ui.ProductDBHelper
 
 class Mypage : AppCompatActivity() {
     lateinit var btn_logout: Button
@@ -84,6 +85,13 @@ class Mypage : AppCompatActivity() {
             sqlite = dbManager.writableDatabase
             sqlite.execSQL("DELETE FROM memberTBL WHERE id = '" + id + "';")
 
+            val pdbManager : ProductDBHelper = ProductDBHelper(this, "food.db")
+            var sqlitedb : SQLiteDatabase = pdbManager.readableDatabase
+            sqlitedb = pdbManager.writableDatabase
+
+            sqlitedb.execSQL("DELETE FROM cloth WHERE cUser = '" + id + "';")
+            sqlitedb.execSQL("DELETE FROM food_comment WHERE fuser = '" + id + "';")
+
             val intent : Intent = Intent(this, LoginActivity::class.java)
             intent.putExtra("del", "yes")
             finishAffinity()
@@ -95,11 +103,8 @@ class Mypage : AppCompatActivity() {
             var changeName = username.text.toString()
             var changePhone = usertel.text.toString()
 
-            Toast.makeText(this, "변경되었습니다!", Toast.LENGTH_SHORT).show()
 
-
-
-            if(changeName.isEmpty() || changePhone.isEmpty()){
+            if(changeName.isBlank() || changePhone.isBlank()){
                 Toast.makeText(this, "제대로 입력하세요", Toast.LENGTH_SHORT).show()
             }else{
 
@@ -111,8 +116,8 @@ class Mypage : AppCompatActivity() {
                 username.setText(changeName)
                 usertel.setText(changePhone)
 
-                /*finishAffinity()
-                startActivity(Intent(this,MainActivity::class.java))*/
+                Toast.makeText(this, "변경되었습니다!", Toast.LENGTH_SHORT).show()
+
             }
 
 

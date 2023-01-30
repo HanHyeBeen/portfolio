@@ -27,7 +27,7 @@
         <activity
             android:name=".ui.clothing.Editor.ClothAddActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -57,7 +57,8 @@
         <activity
             android:name=".member.RegisterActivity"
             android:exported="false"
-            android:parentActivityName=".member.LoginActivity" />
+            android:parentActivityName=".member.LoginActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".member.LoginActivity"
             android:exported="true">

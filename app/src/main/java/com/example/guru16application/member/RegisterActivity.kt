@@ -51,7 +51,6 @@ class RegisterActivity : AppCompatActivity() {
             val id = registerID.text.toString()
             val pw = registerPW.text.toString()
 
-
                 if (name.isBlank() || tel.isBlank() || id.isBlank() || pw.isBlank()) {
                     isExistBlank = true
                 }
@@ -102,7 +101,7 @@ class RegisterActivity : AppCompatActivity() {
         val dialog_listener = DialogInterface.OnClickListener { dialog, which ->
             when(which){
                 DialogInterface.BUTTON_POSITIVE ->{
-                    finish()
+                    finishAffinity()
                     val intent : Intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
                 }

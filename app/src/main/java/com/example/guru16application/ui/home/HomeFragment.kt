@@ -76,6 +76,8 @@ class HomeFragment : Fragment() {
         sqlitedb = dbManager.readableDatabase
         sqlitedb = dbManager.writableDatabase
 
+        todoarr.clear()
+
         var cursor: Cursor
             cursor = sqlitedb.rawQuery("SELECT * FROM todo WHERE touser = '"+logid+"';", null)
 
