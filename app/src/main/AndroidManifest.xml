@@ -51,9 +51,7 @@
             android:name=".ui.clothing.ClothNextActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".ui.home.api.TestActivity"
-            android:exported="false" />
+
         <activity
             android:name=".member.RegisterActivity"
             android:exported="false"
