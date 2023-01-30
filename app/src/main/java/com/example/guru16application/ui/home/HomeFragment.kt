@@ -214,11 +214,12 @@ class HomeFragment : Fragment() {
         val timeH = java.text.SimpleDateFormat("HH", Locale.getDefault()).format(cal.time)
         val timeM = java.text.SimpleDateFormat("HH", Locale.getDefault()).format(cal.time)
 
-        baseTime = WeatherSet().getBaseTime(timeH, timeM)
-        if ((timeH == "00") && (baseTime == "2330")) {
-            cal.add(java.util.Calendar.DATE, -1).toString()
-            baseDate = java.text.SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(cal.time)
-        }
+        baseTime = "0930"
+//        baseTime = WeatherSet().getBaseTime(timeH, timeM)
+//        if ((timeH == "00") && (baseTime == "2330")) {
+//            cal.add(java.util.Calendar.DATE, -1).toString()
+//            baseDate = java.text.SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(cal.time)
+//        }
 
         // 날씨 가져오기
         val call =
@@ -237,12 +238,14 @@ class HomeFragment : Fragment() {
                         "T1H" -> weatherArray[index].temp = it[0].fcstValue
                     }
                     binding.weatherRecyclerView.adapter = WeatherAdapter(weatherArray)
+                    Log.d("setWeather", it[0].fcstDate + ", " + it[0].fcstTime + ", " +it[0].nx + ", " + it[0].ny)
                 }
             }
 
             override fun onFailure(call: Call<Weather>, t: Throwable) {
                 binding.tvError.text = "api failure : " + t.message.toString() + "\n 인터넷 연결이 불안정 합니다"
                 binding.tvError.visibility = View.VISIBLE
+                Log.d("failure", t.message.toString())
             }
         })
     }
@@ -253,6 +256,7 @@ class HomeFragment : Fragment() {
         binding.tvDate.text = SimpleDateFormat("MM월 dd일", Locale.getDefault()).format(
             Calendar.getInstance().time)
         setWeather()
+        Log.d("requestData","요청됨" )
 
     }
     // ──────────────────────────────────────────────────────────── 두 번째 레이아웃 : 할일 목록
