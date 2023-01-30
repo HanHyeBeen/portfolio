@@ -12,24 +12,24 @@ import com.example.guru16application.databinding.ActivityTestBinding
 import com.example.guru16application.ui.home.api.Constants.Companion.TAG
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
-class TestActivity : AppCompatActivity() {
-
-    private val viewModel : WeatherViewModel by viewModels()
-
-    private lateinit var binding: ActivityTestBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = setContentView(this, R.layout.activity_test)
-        binding.lifecycleOwner = this
-
-        viewModel.getWeather("JSON", 20, 1, "20230126", "1230", 62, 128)
-
-        viewModel.weatherResponse.observe(this) {
-            for (i in it.body()?.response!!.body.items.item) {
-                Log.d(TAG, "$i")
-            }
-        }
-    }
-}
+//@AndroidEntryPoint
+//class TestActivity : AppCompatActivity() {
+//
+//    private val viewModel : WeatherViewModel by viewModels()
+//
+//    private lateinit var binding: ActivityTestBinding
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        binding = setContentView(this, R.layout.activity_test)
+//        binding.lifecycleOwner = this
+//
+//        viewModel.getWeather("JSON", 20, 1, "20230126", "1230", 62, 128)
+//
+//        viewModel.weatherResponse.observe(this) {
+//            for (i in it.body()?.response!!.body.items.item) {
+//                Log.d(TAG, "$i")
+//            }
+//        }
+//    }
+//}

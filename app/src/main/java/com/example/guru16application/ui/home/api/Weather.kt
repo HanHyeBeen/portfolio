@@ -1,5 +1,6 @@
 package com.example.guru16application.ui.home.api
 
+import com.google.gson.annotations.SerializedName
 import retrofit2.Response
 
 data class Weather(val response : Response) {
@@ -15,7 +16,8 @@ data class Weather(val response : Response) {
 
     data class Body(
         val dataType : String,
-        val items : Items
+        val items : Items,
+        val totalCount : Int
     )
     data class Items(
         val item : List<Item>
@@ -31,6 +33,13 @@ data class Weather(val response : Response) {
         val ny : Int
     )
 }
+
+data class ModelWeather (
+    @SerializedName("rainType") var rainType : String = "",
+    @SerializedName("sky") var sky : String = "",
+    @SerializedName("temp") var temp : String = "",
+    //@SerializedName("fcstTime") var fcstTime : String = "",
+)
 
 /*
 * < baseDate : 발표 날짜 >

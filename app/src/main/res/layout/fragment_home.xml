@@ -1,12 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="HomeFragment"
+            type="com.example.guru16application.ui.home.HomeFragment"/>
+    </data>
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="mm월 dd일"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Error!!"
+            android:textSize="30dp"
+            android:visibility="gone"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/weatherRecyclerView"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:paddingTop="5dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </LinearLayout>
 
     <com.sothree.slidinguppanel.SlidingUpPanelLayout
         android:layout_width="match_parent"
@@ -155,12 +195,12 @@
 
                 <EditText
                     android:id="@+id/TodoEdt"
-                    android:layout_gravity="center"
-                    android:layout_width="300dp"
+                    android:layout_width="306dp"
                     android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/nanumsquareroundr"
                     android:hint="오늘의 할 일을 입력하세요!"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/nanumsquareroundr" />
+                    android:textSize="15sp" />
 
 
             </LinearLayout>
@@ -169,6 +209,8 @@
         </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
     </LinearLayout>
+
+</layout>
 
 
 

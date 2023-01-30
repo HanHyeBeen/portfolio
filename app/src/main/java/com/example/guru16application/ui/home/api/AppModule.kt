@@ -23,6 +23,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideWeatherAPI(retrofit : Retrofit) : WeatherAPI =
-        retrofit.create(WeatherAPI::class.java)
+    fun provideWeatherAPI() : WeatherAPI {
+        return provideRetrofit().create(WeatherAPI::class.java)
+    }
 }
