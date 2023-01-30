@@ -53,11 +53,6 @@ class HomeFragment : Fragment() {
     private var baseDate = "yyyyMMdd"
     private var baseTime = "0030"
 
-    /*lateinit var todoadd : ImageButton
-    lateinit var todoBtn  : Button
-    lateinit var todoEdt : EditText
-    lateinit var pannel : SlidingUpPanelLayout
-    lateinit var recycler: RecyclerView*/
 
     lateinit var dbManager : ProductDBHelper
     lateinit var sqlitedb : SQLiteDatabase
