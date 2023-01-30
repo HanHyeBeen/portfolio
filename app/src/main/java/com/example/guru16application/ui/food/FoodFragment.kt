@@ -324,7 +324,13 @@ class FoodFragment : Fragment(), MapView.POIItemEventListener {
     }
 
     override fun onPOIItemSelected(p0: MapView?, poiItem: MapPOIItem?) {
-        binding.bottomFoodPanel.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
+
+        if(binding.bottomFoodPanel.panelState == SlidingUpPanelLayout.PanelState.EXPANDED){
+            binding.bottomFoodPanel.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
+        }
+
+
+
 
         val dbManager = ProductDBHelper(mainActivity, "food.db")
         var sqlitedb = dbManager.readableDatabase
@@ -370,7 +376,7 @@ class FoodFragment : Fragment(), MapView.POIItemEventListener {
         Handler(Looper.getMainLooper()).postDelayed({
             //실행 코드
             binding.bottomFoodPanel.panelState = SlidingUpPanelLayout.PanelState.EXPANDED
-        }, 400)
+        }, 600)
 
 
     }

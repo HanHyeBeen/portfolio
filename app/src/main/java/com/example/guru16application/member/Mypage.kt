@@ -1,11 +1,13 @@
 package com.example.guru16application.member
 
+import android.content.Context
 import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -100,6 +102,9 @@ class Mypage : AppCompatActivity() {
         }
 
         userfix.setOnClickListener {
+
+            downKeyboard()
+
             var changeName = username.text.toString()
             var changePhone = usertel.text.toString()
 
@@ -122,6 +127,17 @@ class Mypage : AppCompatActivity() {
 
 
 
+        }
+    }
+
+    private fun downKeyboard() {
+        if (this != null && this.currentFocus != null) {
+            val inputManager: InputMethodManager =
+                this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputManager.hideSoftInputFromWindow(
+                this.currentFocus!!.windowToken,
+                InputMethodManager.HIDE_NOT_ALWAYS
+            )
         }
     }
 

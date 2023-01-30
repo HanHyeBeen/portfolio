@@ -93,6 +93,9 @@ class HomeFragment : Fragment() {
         // ──────────────────────────────────────────────────────────────────────
         val mContext: Context = requireContext()
 
+
+
+        // ──────────────────────────────────────────────────────────────────────
         dbManager = ProductDBHelper(context, "food.db")
         sqlitedb = dbManager.readableDatabase
         sqlitedb = dbManager.writableDatabase
@@ -214,12 +217,11 @@ class HomeFragment : Fragment() {
         val timeH = java.text.SimpleDateFormat("HH", Locale.getDefault()).format(cal.time)
         val timeM = java.text.SimpleDateFormat("HH", Locale.getDefault()).format(cal.time)
 
-        baseTime = "0930"
-//        baseTime = WeatherSet().getBaseTime(timeH, timeM)
-//        if ((timeH == "00") && (baseTime == "2330")) {
-//            cal.add(java.util.Calendar.DATE, -1).toString()
-//            baseDate = java.text.SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(cal.time)
-//        }
+        baseTime = WeatherSet().getBaseTime(timeH, timeM)
+        if ((timeH == "00") && (baseTime == "2330")) {
+          cal.add(java.util.Calendar.DATE, -1).toString()
+            baseDate = java.text.SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(cal.time)
+        }
 
         // 날씨 가져오기
         val call =
@@ -232,11 +234,41 @@ class HomeFragment : Fragment() {
                     val weatherArray = arrayOf(ModelWeather())
 
                     var index = 0
-                    when (it[0].category) {
-                        "PTY" -> weatherArray[index].rainType = it[0].fcstValue
-                        "SKY" -> weatherArray[index].sky = it[0].fcstValue
-                        "T1H" -> weatherArray[index].temp = it[0].fcstValue
+
+                    var i = 0
+                    while(i < it.size){
+
+                        if (it[i].category == "PTY"){
+                            weatherArray[index].rainType = it[i].fcstValue
+                            break
+                        } else {
+                            i++
+                        }
                     }
+
+                    i = 0
+                    while(i < it.size){
+
+                        if (it[i].category == "SKY"){
+                            weatherArray[index].sky = it[i].fcstValue
+                            break
+                        } else {
+                            i++
+                        }
+                    }
+
+                    i = 0
+                    while(i < it.size){
+
+                        if (it[i].category == "T1H"){
+                            weatherArray[index].temp = it[i].fcstValue
+                            break
+                        } else {
+                            i++
+                        }
+                    }
+
+
                     binding.weatherRecyclerView.adapter = WeatherAdapter(weatherArray)
                     Log.d("setWeather", it[0].fcstDate + ", " + it[0].fcstTime + ", " +it[0].nx + ", " + it[0].ny)
                 }
