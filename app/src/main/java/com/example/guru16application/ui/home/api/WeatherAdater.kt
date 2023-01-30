@@ -38,21 +38,21 @@ class WeatherAdapter (var items : Array<ModelWeather>) : RecyclerView.Adapter<We
     fun getRainImage(rainType : String, sky : String) : Int {
         return when(rainType) {
             "0" -> getWeatherImage(sky) // 강수없음
-            "1" -> R.drawable.ic_baseline_umbrella_24 // 비
-            "2" -> R.drawable.ic_baseline_tsunami_24 // 비눈
-            "3" -> R.drawable.ic_baseline_scatter_plot_24 // 눈
-            "5" -> R.drawable.ic_baseline_severe_cold_24 // 빗방울
-            "6" -> R.drawable.ic_baseline_tsunami_24 // 비방울 눈날림
-            "7" -> R.drawable.ic_baseline_scatter_plot_24// 눈날림
+            "1" -> R.drawable.ic_baseline_rain // 비
+            "2" -> R.drawable.ic_baseline_snowrain // 비눈
+            "3" -> R.drawable.ic_baseline_snow // 눈
+            "5" -> R.drawable.ic_baseline_rain // 빗방울
+            "6" -> R.drawable.ic_baseline_snowrain // 비방울 눈날림
+            "7" -> R.drawable.ic_baseline_snow// 눈날림
             else -> R.drawable.ic_baseline_question_mark_24 // 오류 시
         }
     }
 
     private fun getWeatherImage(sky : String) : Int {
         return when(sky) {
-            "1" -> R.drawable.ic_baseline_wb_sunny_24 // 맑음
-            "3" -> R.drawable.ic_baseline_cloud_24 // 구름 많음
-            "4" -> R.drawable.ic_baseline_thunderstorm_24 // 흐림
+            "1" -> R.drawable.ic_baseline_wb_sunny // 맑음
+            "3" -> R.drawable.ic_baseline_cloud // 구름 많음
+            "4" -> R.drawable.ic_baseline_fog // 흐림
             else -> R.drawable.ic_baseline_question_mark_24 // 오류 시
         }
     }

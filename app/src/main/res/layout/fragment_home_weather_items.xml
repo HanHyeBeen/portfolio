@@ -23,6 +23,6 @@
         android:text="기온"
         android:fontFamily="@font/nanumsquareroundb"
         android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:textSize="30sp" />
 
 </LinearLayout>
