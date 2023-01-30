@@ -1,6 +1,7 @@
 package com.example.guru16application.member
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
@@ -13,9 +14,11 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.guru16application.MainActivity
 import com.example.guru16application.R
 import com.example.guru16application.ui.ProductDBHelper
+import com.example.guru16application.ui.food.fCListAdapter
 
 class Mypage : AppCompatActivity() {
     lateinit var btn_logout: Button
@@ -79,25 +82,40 @@ class Mypage : AppCompatActivity() {
         }
 
         btn_delete.setOnClickListener {
+
+
             var id = userid.getValue()
-            userid.reValue()
 
-            dbManager = DBManager(this, "memberDB", null, 1)
-            sqlite = dbManager.readableDatabase
-            sqlite = dbManager.writableDatabase
-            sqlite.execSQL("DELETE FROM memberTBL WHERE id = '" + id + "';")
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("탈퇴하시겠습니까?")
+                .setPositiveButton("확인",
+                    DialogInterface.OnClickListener{ dialog, i ->
+                        userid.reValue()
 
-            val pdbManager : ProductDBHelper = ProductDBHelper(this, "food.db")
-            var sqlitedb : SQLiteDatabase = pdbManager.readableDatabase
-            sqlitedb = pdbManager.writableDatabase
+                        dbManager = DBManager(this, "memberDB", null, 1)
+                        sqlite = dbManager.readableDatabase
+                        sqlite = dbManager.writableDatabase
+                        sqlite.execSQL("DELETE FROM memberTBL WHERE id = '" + id + "';")
 
-            sqlitedb.execSQL("DELETE FROM cloth WHERE cUser = '" + id + "';")
-            sqlitedb.execSQL("DELETE FROM food_comment WHERE fuser = '" + id + "';")
+                        val pdbManager : ProductDBHelper = ProductDBHelper(this, "food.db")
+                        var sqlitedb : SQLiteDatabase = pdbManager.readableDatabase
+                        sqlitedb = pdbManager.writableDatabase
 
-            val intent : Intent = Intent(this, LoginActivity::class.java)
-            intent.putExtra("del", "yes")
-            finishAffinity()
-            startActivity(intent)
+                        sqlitedb.execSQL("DELETE FROM cloth WHERE cUser = '" + id + "';")
+                        sqlitedb.execSQL("DELETE FROM food_comment WHERE fuser = '" + id + "';")
+
+                        val intent : Intent = Intent(this, LoginActivity::class.java)
+                        intent.putExtra("del", "yes")
+                        finishAffinity()
+                        startActivity(intent)
+
+                    })
+                .setNegativeButton("취소",
+                    DialogInterface.OnClickListener{ dialog, i ->
+
+                    })
+            builder.show()
+
 
         }
 
