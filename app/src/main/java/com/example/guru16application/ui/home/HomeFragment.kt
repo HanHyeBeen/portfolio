@@ -90,12 +90,10 @@ class HomeFragment : Fragment() {
         binding.tvDate.text = SimpleDateFormat("MM월 dd일", Locale.getDefault()).format(Calendar.getInstance().time)
         requestData()
 
-        // ──────────────────────────────────────────────────────────────────────
-        val mContext: Context = requireContext()
 
 
 
-        // ──────────────────────────────────────────────────────────────────────
+        // ────────────────────────────────────────────────────────────────────── 투두리스트
         dbManager = ProductDBHelper(context, "food.db")
         sqlitedb = dbManager.readableDatabase
         sqlitedb = dbManager.writableDatabase

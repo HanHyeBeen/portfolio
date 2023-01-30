@@ -69,7 +69,7 @@ class Mypage : AppCompatActivity() {
             usertel.setText(Usertel)
         }
 
-
+        //로그아웃
         btn_logout.setOnClickListener {
             userid.reValue()
             val intent : Intent = Intent(this, LoginActivity::class.java)
@@ -77,10 +77,12 @@ class Mypage : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //종료
         btn_back.setOnClickListener {
             finish()
         }
 
+        //유저 탈퇴
         btn_delete.setOnClickListener {
 
 
@@ -119,6 +121,7 @@ class Mypage : AppCompatActivity() {
 
         }
 
+        //유저 이름 또는 전화번호 변경
         userfix.setOnClickListener {
 
             downKeyboard()

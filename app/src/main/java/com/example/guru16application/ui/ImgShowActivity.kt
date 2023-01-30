@@ -16,6 +16,7 @@ import android.widget.Toast
 import com.example.guru16application.R
 import com.github.chrisbanes.photoview.PhotoView
 
+//이미지 크게보기
 class ImgShowActivity : AppCompatActivity() {
 
     lateinit var backBtn : ImageButton

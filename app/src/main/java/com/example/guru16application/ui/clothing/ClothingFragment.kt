@@ -39,18 +39,9 @@ class ClothingFragment : Fragment() {
     var Grlist = ArrayList<ReViewItem>()
 
 
-    //lateinit var mainActivity: MainActivity
-
     lateinit var dbManager: ProductDBHelper
     lateinit var sqlitedb: SQLiteDatabase
 
-
-    /*override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-
-        mainActivity = context as MainActivity
-    }*/
 
 
     override fun onCreateView(
@@ -69,14 +60,6 @@ class ClothingFragment : Fragment() {
         button.setOnClickListener {
             val intent : Intent = Intent(context, ClothAddActivity::class.java)
             startActivity(intent)
-            /*val requestLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult())
-        {
-            it.data!!.getStringExtra("result")?.let {
-               // datas?.add(it)
-               // adapter.notifyDataSetChanged()
-            }
-        }*/
         }
 
         // 보일 아이템 검색
@@ -247,6 +230,7 @@ class ClothingFragment : Fragment() {
         _binding = null
     }
 
+    //다른 화면의 종료로 다시 보일 시 호출
     override fun onResume() {
         super.onResume()
 

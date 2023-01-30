@@ -73,6 +73,7 @@ class ClothNextActivity : AppCompatActivity() {
             finish()
         }
 
+        //상세보기
         conlayout.setOnClickListener{
             if(vlayout.visibility == View.VISIBLE){
 
@@ -186,10 +187,4 @@ class ClothNextActivity : AppCompatActivity() {
 
     }
 
-   private fun bitTobyte(bitmap: Bitmap) : ByteArray{
-       var stream : ByteArrayOutputStream = ByteArrayOutputStream()
-       bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
-       var byteArray: ByteArray = stream.toByteArray()
-       return byteArray
-   }
 }

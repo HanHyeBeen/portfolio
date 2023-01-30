@@ -51,9 +51,9 @@ class RegisterActivity : AppCompatActivity() {
             val id = registerID.text.toString()
             val pw = registerPW.text.toString()
 
-                if (name.isBlank() || tel.isBlank() || id.isBlank() || pw.isBlank()) {
+            if (name.isBlank() || tel.isBlank() || id.isBlank() || pw.isBlank()) {
                     isExistBlank = true
-                }
+            }
 
             if (isExistBlank) {
                 dialog("blank")
@@ -95,6 +95,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    //회원가입 상황에 따른 대응 메세지
     fun dialog(type: String){
         val dialog = AlertDialog.Builder(this)
 

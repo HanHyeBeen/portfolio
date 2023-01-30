@@ -318,11 +318,6 @@ class ClothAddActivity : AppCompatActivity() {
         bitmap!!.compress(Bitmap.CompressFormat.PNG, 40, stream)
         return stream.toByteArray()
 
-        /*var buffer: ByteBuffer = ByteBuffer.allocate(bitmap!!.byteCount)
-        bitmap?.copyPixelsToBuffer(buffer)
-        var byteArray: ByteArray = buffer.array()
-
-        return byteArray*/
     }
 
     private fun downKeyboard() {

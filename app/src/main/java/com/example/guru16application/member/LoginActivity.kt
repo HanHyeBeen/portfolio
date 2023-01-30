@@ -40,8 +40,6 @@ class LoginActivity : AppCompatActivity() {
 
     lateinit var userid : datashare
 
-    //val dialog = AlertDialog.Builder(this)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -52,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
         btn_register = findViewById(R.id.btn_register)
         autoLogin = findViewById(R.id.autoLogin)
 
-        // 첫 화면에서 db set
+        // 첫 화면에서 db 읽어오기
 
         var check: File = File(filePath + "food.db")
         if (check.exists()) {
@@ -65,6 +63,7 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
+        //탈퇴 여부 확인
         val test = intent.getStringExtra("del").toString()
         if (test == "yes"){
             clearUser2()
@@ -72,11 +71,11 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
-
+        //자동 로그인 클릭 시 user 불러 오기
         loadUser2()
 
+        //기존에 자동 로그인 체크되었는지 확인
         val ckbox : String? = loadcheck()
-
 
         if(ckbox == "yes"){
             autoLogin.isChecked = true
@@ -154,7 +153,7 @@ class LoginActivity : AppCompatActivity() {
 
     // ───────────────────────── 자동 로그인을 위한 메소드 ─────────────────────────
 
-    private fun saveUser(id : String, pw : String) {
+    /*private fun saveUser(id : String, pw : String) {
         var pref = this.getPreferences(0)
         var editor = pref.edit()
 
@@ -172,7 +171,7 @@ class LoginActivity : AppCompatActivity() {
             editID.setText(id.toString())
             editPW.setText(pw.toString())
         }
-    }
+    }*/
 
     // ───────────────────────── 자동 로그인을 위한 메소드 ─────────────────────────
 
@@ -225,6 +224,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
+    //기존 db 파일 읽어오기
 
     private fun setDB(ctx: Context) {
 

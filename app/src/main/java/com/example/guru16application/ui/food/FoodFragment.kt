@@ -61,11 +61,6 @@ class FoodFragment : Fragment(), MapView.POIItemEventListener {
         _binding = inflate(inflater, container, false)
         val root: View = binding.root
 
-        //이후 삭제해도 괜찮은 코드
-        /*val textView: TextView = binding.textFood
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }*/
 
         lateinit var dbManager: ProductDBHelper
         lateinit var sqlitedb: SQLiteDatabase
@@ -73,8 +68,7 @@ class FoodFragment : Fragment(), MapView.POIItemEventListener {
 
         var list = arrayListOf<ListViewItem>()  //data 받아올 장소
 
-        //val view: View = inflater.inflate(R.layout.fragment_food, container, false)
-
+        //map 설정
         var map: MapView = MapView(activity)
         var mapcontainer: ViewGroup = binding.foodmap as ViewGroup
 
@@ -158,7 +152,6 @@ class FoodFragment : Fragment(), MapView.POIItemEventListener {
             sermap.setCalloutBalloonAdapter(CustumBallonAdapter(layoutInflater, mainActivity))
             sermap.setPOIItemEventListener(this)
 
-            //Toast.makeText(mainActivity,"됨", Toast.LENGTH_SHORT).show()
 
             var str_text: String = binding.foodSearchEdt.text.toString()
             var searchArr = ArrayList<MapPOIItem>()
@@ -322,7 +315,7 @@ class FoodFragment : Fragment(), MapView.POIItemEventListener {
             )
         }
     }
-
+//마커 클릭 시 이벤트
     override fun onPOIItemSelected(p0: MapView?, poiItem: MapPOIItem?) {
 
         if(binding.bottomFoodPanel.panelState == SlidingUpPanelLayout.PanelState.EXPANDED){
@@ -398,53 +391,3 @@ class FoodFragment : Fragment(), MapView.POIItemEventListener {
 
 }
 
-
-
-/* MainActivity: asset에 있는 db 파일 읽어서 추가하고 접근하기
-//create 추가
- var check: File = File(filePath + "food.db")
-        if (check.exists()) {
-            Toast.makeText(this, "있음", Toast.LENGTH_SHORT).show()
-        } else {
-
-            setDB(this)
-            val mHelper: ProductDBHelper = ProductDBHelper(this, "food.db")
-            db = mHelper.writableDatabase
-
-        }
-
-//변수
-lateinit var db: SQLiteDatabase
-var filePath: String = "/data/data/com.example.guru16application/databases/"
-
-//함수
- private fun setDB(ctx: Context) {
-
-        var folder: File = File(filePath)
-        if (folder.exists()) {
-        } else {
-            folder.mkdirs();
-        }
-        var assetManager: AssetManager = ctx.resources.assets
-        var outfile: File = File(filePath + "food.db")
-        var IStr: InputStream? = null
-        var fo: FileOutputStream? = null
-        var filesize: Int = 0
-        try {
-            IStr = assetManager.open("food.db", AssetManager.ACCESS_BUFFER)
-            filesize = IStr.available()
-            if (outfile.length() <= 0) {
-                val buffer = ByteArray(filesize)
-                // byte[] tempdata = new byte[(int) filesize];
-                IStr.read(buffer)
-                IStr.close()
-                outfile.createNewFile()
-                fo = FileOutputStream(outfile)
-                fo.write(buffer)
-                fo.close()
-            } else {
-            }
-        } finally {
-        }
-    }
- */

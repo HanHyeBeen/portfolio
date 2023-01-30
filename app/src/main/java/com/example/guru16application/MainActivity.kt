@@ -54,18 +54,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
 
-        // 데이터베이스
-       /* var check: File = File(filePath + "food.db")
-        if (check.exists()) {
-
-        } else {
-
-            setDB(this)
-            val mHelper: ProductDBHelper = ProductDBHelper(this, "food.db")
-            db = mHelper.writableDatabase
-
-        }*/
-
         // 내비게이션 프래그먼트 : 이동할 페이지 할당
         val navView: BottomNavigationView = binding.navView
 
@@ -132,35 +120,5 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    // ─────────────────────────────────── 데이터베이스 ───────────────────────────────────
-    private fun setDB(ctx: Context) {
-
-        var folder: File = File(filePath)
-        if (folder.exists()) {
-        } else {
-            folder.mkdirs();
-        }
-        var assetManager: AssetManager = ctx.resources.assets
-        var outfile: File = File(filePath + "food.db")
-        var IStr: InputStream? = null
-        var fo: FileOutputStream? = null
-        var filesize: Int = 0
-        try {
-            IStr = assetManager.open("food.db", AssetManager.ACCESS_BUFFER)
-            filesize = IStr.available()
-            if (outfile.length() <= 0) {
-                val buffer = ByteArray(filesize)
-
-                IStr.read(buffer)
-                IStr.close()
-                outfile.createNewFile()
-                fo = FileOutputStream(outfile)
-                fo.write(buffer)
-                fo.close()
-            } else {
-            }
-        } finally {
-        }
-    }
 
 }

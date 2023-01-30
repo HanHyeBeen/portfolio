@@ -4,6 +4,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
+//최초 생성할 memberDB
 class DBManager(
     context: Context?,
     name: String?,
