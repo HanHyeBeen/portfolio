@@ -7,19 +7,23 @@
     tools:context=".ui.shelter.ShelterFragment">
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_margin="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
             android:id="@+id/shelterSearchEdt"
-            android:layout_width="350dp"
+            android:layout_width="270dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginHorizontal="3dp"
             android:fontFamily="@font/nanumsquareroundr"
             android:hint="검색어를 입력하세요"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -31,15 +35,15 @@
             android:id="@+id/shelterSearchBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
             android:fontFamily="@font/nanumsquareroundb"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="10dp"
             android:text="검색"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toRightOf="parent"
             app:layout_constraintStart_toEndOf="@+id/shelterSearchEdt"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/textView"

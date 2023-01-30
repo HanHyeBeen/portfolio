@@ -21,7 +21,7 @@
 
             <EditText
                 android:id="@+id/clothSearchEdt"
-                android:layout_width="350dp"
+                android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumsquareroundr"
                 android:hint="검색어를 입력하세요"
